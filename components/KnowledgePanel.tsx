@@ -1,18 +1,32 @@
 import React from 'react';
-import { Share2, Globe, Phone, Mail, MapPin, ExternalLink } from 'lucide-react';
+import { Share2, Globe, Phone, Mail, MapPin, ExternalLink, Award } from 'lucide-react';
 import { RESUME_DATA, AVATAR_URL } from '../constants';
 
 export const KnowledgePanel: React.FC = () => {
+  const fallbackImage = "https://ui-avatars.com/api/?name=Sai+Kiran+Jabu&background=1a73e8&color=fff&size=200";
+
   return (
-    <div className="w-full md:w-[360px] border border-[#dadce0] rounded-lg overflow-hidden h-fit ml-0 md:ml-8 mb-8 md:mb-0">
+    <div className="w-full md:w-[360px] border border-[#dadce0] rounded-lg overflow-hidden h-fit ml-0 md:ml-8 mb-8 md:mb-0 shadow-sm bg-white">
       {/* Images Section (Simulated) */}
       <div className="h-[200px] bg-gray-100 relative grid grid-cols-3 gap-0.5">
          <div className="col-span-2 relative">
-             <img src={AVATAR_URL} alt="Alex Sterling" className="w-full h-full object-cover" />
+             <img 
+               src={AVATAR_URL} 
+               alt={RESUME_DATA.name} 
+               className="w-full h-full object-cover object-top" 
+               onError={(e) => {
+                 e.currentTarget.src = fallbackImage;
+               }}
+             />
          </div>
          <div className="grid grid-rows-2 gap-0.5">
-             <div className="bg-blue-100 flex items-center justify-center text-xs text-gray-500">Resume</div>
-             <div className="bg-green-100 flex items-center justify-center text-xs text-gray-500">Portfolio</div>
+             <div className="bg-[#e8f0fe] flex flex-col items-center justify-center text-xs text-[#1967d2] font-medium p-2 text-center">
+                <Award size={20} className="mb-1" />
+                4+ Certifications
+             </div>
+             <div className="bg-[#fce8e6] flex flex-col items-center justify-center text-xs text-[#c5221f] font-medium p-2 text-center">
+                $500K+ <br/> Monthly Spend
+             </div>
          </div>
       </div>
 
@@ -32,10 +46,10 @@ export const KnowledgePanel: React.FC = () => {
         {/* Action Buttons */}
         <div className="flex gap-2 mb-6">
             <a href={`mailto:${RESUME_DATA.contact.email}`} className="flex-1 flex items-center justify-center gap-2 bg-[#e8f0fe] text-[#1a73e8] py-2 rounded-full text-sm font-medium hover:bg-[#d2e3fc] transition-colors">
-                <Mail size={16} /> Contact
+                <Mail size={16} /> Email
             </a>
-            <a href={`https://${RESUME_DATA.contact.website}`} target="_blank" rel="noreferrer" className="flex-1 flex items-center justify-center gap-2 border border-[#dadce0] text-[#1a73e8] py-2 rounded-full text-sm font-medium hover:bg-[#f1f3f4] transition-colors">
-                <Globe size={16} /> Website
+            <a href={`https://${RESUME_DATA.contact.linkedin}`} target="_blank" rel="noreferrer" className="flex-1 flex items-center justify-center gap-2 border border-[#dadce0] text-[#1a73e8] py-2 rounded-full text-sm font-medium hover:bg-[#f1f3f4] transition-colors">
+                LinkedIn
             </a>
         </div>
 
@@ -53,7 +67,7 @@ export const KnowledgePanel: React.FC = () => {
              <div className="flex items-start gap-3 text-sm">
                  <MapPin size={18} className="text-[#5f6368] mt-0.5" />
                  <div>
-                     <span className="font-bold text-[#202124]">Located in: </span>
+                     <span className="font-bold text-[#202124]">Location: </span>
                      <span className="text-[#4d5156]">{RESUME_DATA.contact.location}</span>
                  </div>
              </div>
@@ -64,6 +78,18 @@ export const KnowledgePanel: React.FC = () => {
                      <span className="text-[#1a0dab] cursor-pointer hover:underline">{RESUME_DATA.contact.phone}</span>
                  </div>
              </div>
+        </div>
+        
+        {/* Interests */}
+        <div className="border-t border-[#dadce0] mt-4 pt-4">
+            <h3 className="font-bold text-[#202124] text-lg mb-2 font-google">Interests</h3>
+            <div className="flex flex-wrap gap-2">
+                {RESUME_DATA.interests.map((interest, i) => (
+                    <span key={i} className="px-3 py-1 bg-gray-100 rounded-full text-xs text-[#202124]">
+                        {interest}
+                    </span>
+                ))}
+            </div>
         </div>
 
         {/* Profiles */}
@@ -76,12 +102,6 @@ export const KnowledgePanel: React.FC = () => {
                     </div>
                     <span className="text-xs text-[#202124] group-hover:underline">LinkedIn</span>
                 </a>
-                <div className="flex flex-col items-center gap-1 group cursor-pointer">
-                    <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                        <span className="font-bold text-lg">X</span>
-                    </div>
-                    <span className="text-xs text-[#202124] group-hover:underline">X</span>
-                </div>
             </div>
         </div>
 

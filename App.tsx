@@ -15,7 +15,6 @@ function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSearch = (query: string) => {
     // In a real app, this would filter results.
-    // For this demo, we just log it or could update state to show "Results for..."
     console.log("Searching for:", query);
   };
 
@@ -24,29 +23,29 @@ function App() {
       <Header onSearch={handleSearch} />
       <Tabs activeTab={activeTab} onTabChange={setActiveTab} />
       
-      <div className="flex-grow flex flex-col md:flex-row px-4 sm:px-[180px] py-6 gap-0">
+      <div className="flex-grow flex flex-col lg:flex-row px-4 sm:px-[180px] py-6 gap-0">
         
         {/* Main Content Column */}
         <main className="flex-grow max-w-[652px]">
             <div className="text-sm text-[#5f6368] mb-4">
-                About 5,000,000 results (0.42 seconds)
+                About 132,000 results (0.34 seconds)
             </div>
 
             {/* AD Result - Always show first on "All" */}
             {activeTab === Tab.ALL && (
                 <AdResult 
-                    headline={`Hire Top ${RESUME_DATA.title} - Maximize ROAS Today`}
-                    description={`Proven track record managing $500K+ monthly ad spend. ${RESUME_DATA.name} optimizes SA360 & Google Ads for luxury hotels & eCommerce. Request an audit.`}
-                    displayUrl={`www.${RESUME_DATA.contact.website || 'saikiran.dev'}/hire-me`}
+                    headline="Hire Top SEM Specialist & Performance Marketer - Maximize ROAS Today"
+                    description="Proven track record managing $500K+ monthly ad spend. Sai Kiran Jabu optimizes SA360 & Google Ads for luxury hotels & eCommerce"
+                    displayUrl={`${RESUME_DATA.contact.website || 'saikiran.dev'}/hire-now`}
                     destinationUrl="#"
-                    sitelinks={["Portfolio", "Case Studies", "Contact", "Certifications"]}
+                    sitelinks={["Portfolio", "Experience", "Contact Me", "Projects"]}
                 />
             )}
 
             {/* AI Overview */}
             {activeTab === Tab.ALL && <AIOverview />}
 
-            {/* Experience Results */}
+            {/* Work Experience Results */}
             {(activeTab === Tab.ALL || activeTab === Tab.EXPERIENCE) && (
                 <>
                     {RESUME_DATA.experience.map((exp) => (
@@ -54,7 +53,8 @@ function App() {
                             key={exp.id}
                             title={`${exp.role} - ${exp.company}`}
                             url={exp.url}
-                            description={`${exp.period}. ${exp.description} Key Achievements: ${exp.achievements.join(' ')}`}
+                            date={exp.period}
+                            description={`${exp.location} · ${exp.description} Key Achievements: ${exp.achievements.slice(0, 2).join(' ')}`}
                             breadcrumbs={[exp.company, "Careers", exp.role]}
                         />
                     ))}
@@ -64,27 +64,55 @@ function App() {
             {/* People Also Ask */}
             {activeTab === Tab.ALL && <PeopleAlsoAsk />}
 
+             {/* Projects Results (Featured in All or Projects Tab) */}
+             {(activeTab === Tab.ALL || activeTab === Tab.PROJECTS) && RESUME_DATA.projects.map((project, idx) => (
+                 <SearchResult
+                    key={`proj-${idx}`}
+                    title={`${project.title} - ${project.description}`}
+                    url={project.link}
+                    description={`Tech Stack: ${project.tech}. ${project.description}`}
+                    breadcrumbs={["Projects", project.title]}
+                />
+            ))}
+
             {/* Skills Results */}
             {(activeTab === Tab.ALL || activeTab === Tab.SKILLS) && RESUME_DATA.skills.map((skill, idx) => (
                  <SearchResult
-                    key={idx}
-                    title={`Top ${skill.category} Skills - ${RESUME_DATA.name}`}
-                    url={`https://${RESUME_DATA.contact.website}/skills/${skill.category.toLowerCase().replace(' ', '-')}`}
-                    description={`Expertise in ${skill.items.join(', ')}. Comprehensive knowledge of digital marketing tools and strategies.`}
+                    key={`skill-${idx}`}
+                    title={`Top ${skill.category} - ${RESUME_DATA.name}`}
+                    url={`https://${RESUME_DATA.contact.website}/skills/${skill.category.toLowerCase().replace(/\s+/g, '-')}`}
+                    description={`Expertise in ${skill.items.join(', ')}. Proven track record of applying these tools to drive high ROAS.`}
                     breadcrumbs={["Skills", skill.category]}
                 />
             ))}
 
-             {/* Education Results */}
-            {(activeTab === Tab.ALL || activeTab === Tab.EDUCATION) && RESUME_DATA.education.map((edu) => (
-                 <SearchResult
-                    key={edu.id}
-                    title={`${edu.degree} - ${edu.institution}`}
-                    url={`https://${RESUME_DATA.contact.website}/education`}
-                    description={`Completed in ${edu.year}. Solid foundation for analytical and technical roles.`}
-                    breadcrumbs={["Education", edu.institution]}
-                />
-            ))}
+             {/* Education & Certifications Results */}
+            {(activeTab === Tab.ALL || activeTab === Tab.EDUCATION) && (
+              <>
+                {RESUME_DATA.education.map((edu) => (
+                    <SearchResult
+                        key={edu.id}
+                        title={`${edu.degree} - ${edu.institution}`}
+                        url={`https://${RESUME_DATA.contact.website}/education`}
+                        description={`Completed in ${edu.year}. Solid foundation for analytical and technical roles.`}
+                        breadcrumbs={["Education", edu.institution]}
+                    />
+                ))}
+                
+                {/* Certifications Block */}
+                <div className="mb-8 max-w-[600px] border border-[#dadce0] rounded-lg p-4">
+                   <h3 className="text-lg text-[#202124] mb-2">Certifications</h3>
+                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {RESUME_DATA.certifications.map((cert, i) => (
+                        <div key={i} className="flex items-center gap-2 text-sm text-[#4d5156]">
+                           <span className="w-1.5 h-1.5 bg-[#1a73e8] rounded-full"></span>
+                           {cert}
+                        </div>
+                      ))}
+                   </div>
+                </div>
+              </>
+            )}
 
             {/* Footer Pagination Simulation */}
             <div className="py-10 flex justify-center">
@@ -116,7 +144,7 @@ function App() {
 
       </div>
       
-      {/* Mobile Footer Sticky Action (optional) */}
+      {/* Mobile Footer Sticky Action */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-3 flex justify-around shadow-[0_-2px_10px_rgba(0,0,0,0.1)] z-50">
          <a href={`mailto:${RESUME_DATA.contact.email}`} className="flex flex-col items-center gap-1 text-[#5f6368]">
             <span className="text-xs">Email</span>

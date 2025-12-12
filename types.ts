@@ -6,6 +6,7 @@ export interface Experience {
   description: string;
   achievements: string[];
   url: string;
+  location: string;
 }
 
 export interface Education {
@@ -18,6 +19,13 @@ export interface Education {
 export interface Skill {
   category: string;
   items: string[];
+}
+
+export interface Project {
+  title: string;
+  description: string;
+  link: string;
+  tech: string;
 }
 
 export interface Contact {
@@ -35,6 +43,9 @@ export interface ResumeData {
   experience: Experience[];
   education: Education[];
   skills: Skill[];
+  projects: Project[];
+  certifications: string[];
+  interests: string[];
   contact: Contact;
   stats: {
     label: string;

@@ -9,7 +9,7 @@ export const AIOverview: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [hasAsked, setHasAsked] = useState(false);
 
-  const defaultSummary = "Sai Kiran Jabu is a **SEM Specialist & Performance Marketer** with **5+ years of experience** managing large-scale portfolios. He currently manages **$500K+ in monthly ad spend** for luxury hotel clients at Cendyn. His core competencies include **Google Ads, SA360, Meta Ads, and GA4**, with a strong focus on **ROAS improvement and funnel optimization**.";
+  const defaultSummary = "**Sai Kiran Jabu** is a **Performance Marketing & PPC Specialist** based in Hyderabad with **5+ years of experience**. He currently manages **$500K+ monthly spend** for luxury hotel clients at Cendyn. \n\nKey Highlights:\n*   **Platforms:** Google Ads, SA360, Bing Ads, Meta Ads, GA4.\n*   **Expertise:** Advanced bidding strategies, RLSA, Customer Match, and funnel-based optimizations.\n*   **Projects:** Creator of 'Car Log' (AI Dashboard) and this SERP-style resume.\n*   **Certifications:** Google Ads Search, Display, SA360, and Shopping.";
 
   const handleAsk = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,7 +46,10 @@ export const AIOverview: React.FC = () => {
                 </div>
              ) : (
                 <div dangerouslySetInnerHTML={{ 
-                    __html: (response || defaultSummary).replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br/>') 
+                    __html: (response || defaultSummary)
+                      .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+                      .replace(/\* /g, '• ')
+                      .replace(/\n/g, '<br/>') 
                 }} />
              )}
           </div>
@@ -54,7 +57,7 @@ export const AIOverview: React.FC = () => {
           <form onSubmit={handleAsk} className="relative mt-2">
              <input
                type="text"
-               placeholder="Ask about Sai's experience, SA360 skills, or budgets..."
+               placeholder="Ask about Sai's SA360 experience..."
                className="w-full bg-white border border-[#dfe1e5] rounded-full py-2.5 pl-4 pr-12 text-sm focus:outline-none focus:shadow-md transition-shadow"
                value={query}
                onChange={(e) => setQuery(e.target.value)}
@@ -71,13 +74,13 @@ export const AIOverview: React.FC = () => {
           <div className="mt-3 flex gap-2 overflow-x-auto scrollbar-hide">
             {!hasAsked && (
                 <>
-                <button onClick={() => { setQuery("What is Sai's experience with SA360?"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white border border-[#dadce0] rounded-full px-3 py-1.5 text-xs text-[#202124] hover:bg-[#f8f9fa] transition-colors">
-                    Experience with SA360?
+                <button onClick={() => { setQuery("What campaigns has Sai managed?"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white border border-[#dadce0] rounded-full px-3 py-1.5 text-xs text-[#202124] hover:bg-[#f8f9fa] transition-colors">
+                    Campaign Experience
                 </button>
-                <button onClick={() => { setQuery("What budgets has he managed?"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white border border-[#dadce0] rounded-full px-3 py-1.5 text-xs text-[#202124] hover:bg-[#f8f9fa] transition-colors">
-                    Budget Experience?
+                <button onClick={() => { setQuery("What are his top skills?"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white border border-[#dadce0] rounded-full px-3 py-1.5 text-xs text-[#202124] hover:bg-[#f8f9fa] transition-colors">
+                    Top Skills
                 </button>
-                <button onClick={() => { setQuery("Contact info"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white border border-[#dadce0] rounded-full px-3 py-1.5 text-xs text-[#202124] hover:bg-[#f8f9fa] transition-colors">
+                <button onClick={() => { setQuery("How to contact Sai?"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white border border-[#dadce0] rounded-full px-3 py-1.5 text-xs text-[#202124] hover:bg-[#f8f9fa] transition-colors">
                     Contact Info
                 </button>
                 </>

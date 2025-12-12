@@ -2,123 +2,153 @@ import { ResumeData } from './types';
 
 export const RESUME_DATA: ResumeData = {
   name: "Sai Kiran Jabu",
-  title: "SEM Specialist & Performance Marketer",
-  about: "Performance Marketing & PPC Specialist with 5+ years of experience managing large-scale paid search portfolios, including luxury hotel accounts with monthly budgets exceeding $500K. Skilled in Google Ads, Bing Ads, SA360, GA4, Meta Ads, and advanced optimization tactics such as RLSA and Customer Match.",
+  title: "SEM Specialist | Performance Marketing & PPC Specialist",
+  about: "Performance Marketing & PPC Specialist with 5+ years of experience managing large-scale paid search portfolios, including luxury hotel accounts with $500K+ monthly spend. Expert in Google Ads, Bing Ads, SA360, GA4, Meta Ads, advanced bidding strategies, RLSA, Customer Match, funnel-based optimizations, and analytics-driven growth. Proven record of increasing ROAS, reducing CPA, and scaling high-performance campaigns.",
   contact: {
     email: "saikiran.jabu95@gmail.com",
     phone: "+91 7702183149",
-    linkedin: "linkedin.com/in/sai-kiran-j",
-    website: "saikiran-jabu.dev",
+    linkedin: "www.linkedin.com/in/sai-kiran-j",
+    website: "saikiran-jabu.dev", // Placeholder for portfolio if not provided, used for display URL
     location: "Hyderabad, Telangana, India"
   },
   stats: [
-    { label: "Monthly Ad Spend", value: "$500K+" },
+    { label: "Monthly Spend", value: "$500K+" },
     { label: "Experience", value: "5+ Years" },
-    { label: "Certifications", value: "4+" },
-    { label: "Accounts Managed", value: "25+" }
+    { label: "Certifications", value: "4" },
+    { label: "ROAS Growth", value: "High" }
   ],
   experience: [
     {
       id: "exp1",
-      company: "Cendyn",
+      company: "Cendyn India Pvt Ltd.",
       role: "SEM Specialist",
-      period: "Aug 2023 - Present",
-      url: "https://www.cendyn.com/careers",
-      description: "Managing 20–25 luxury hotel & resort paid search accounts across the USA.",
+      period: "Aug 2023 – Present",
+      location: "Hyderabad, India",
+      url: "https://www.cendyn.com",
+      description: "Managing 20–25 US-based luxury hotel & resort paid search accounts.",
       achievements: [
-        "Oversaw $500K+ monthly ad spend focused on maximizing bookings and revenue.",
-        "Demonstrated advanced expertise in SA360, including budget group management and bid strategy implementation.",
-        "Implemented advanced tactics such as RLSA, Customer Match, and lookalike modeling.",
-        "Drove user acquisition by identifying revenue opportunities and optimizing funnel performance."
+        "Managed $500K+ monthly spend across Google & Bing Ads via SA360.",
+        "Owned end-to-end account management, strategic planning (monthly/quarterly), and budget pacing.",
+        "Expertise in SA360 budget groups, bid strategies, and Floodlight alignment.",
+        "Executed RLSA, Customer Match, lookalikes, and upper-funnel strategies.",
+        "Drove consistent incremental revenue by identifying optimization opportunities.",
+        "Mentored teams and led strategy sessions to solve campaign performance issues."
       ]
     },
     {
       id: "exp2",
       company: "Webdura Technologies",
       role: "Sr. Performance Marketing Executive",
-      period: "Jun 2022 - Jun 2023",
+      period: "Jun 2022 – Jun 2023",
+      location: "India",
       url: "https://webdura.tech",
-      description: "Managed media planning and execution for eCommerce and lead gen clients across USA, NZ, and Australia.",
+      description: "Managed client onboarding and multi-channel performance strategies.",
       achievements: [
-        "Executed Paid Search and Paid Social campaigns improving ROI and driving scalable lead generation.",
-        "Coordinated with cross-functional teams (Creative, Dev, Google/Meta reps) to ensure KPI alignment.",
-        "Managed client onboarding, communication, and monthly performance strategy forecasting."
+        "Handled Google Ads, Meta Ads & Email Marketing daily ops including tracking and reporting.",
+        "Improved ROI, CPA, and lead generation via optimized multi-channel strategies.",
+        "Coordinated with Google/Meta reps and Dev teams for creative and tracking requirements.",
+        "Utilized Google Ads Editor, FB Business Manager, and Klaviyo for execution."
       ]
     },
     {
       id: "exp3",
-      company: "J2W",
+      company: "JoulestoWatts Business Solutions",
       role: "Process Associate",
-      period: "Jun 2021 - Mar 2022",
-      url: "https://www.j2w.com",
-      description: "Ran and optimized Search, Shopping, Display, and Video campaigns for multiple clients.",
+      period: "Jun 2021 – Mar 2022",
+      location: "India",
+      url: "https://www.joulestowatts.com",
+      description: "End-to-end management of Google & Meta campaigns.",
       achievements: [
-        "Analyzed key metrics to maintain target CPA and improve conversion rates.",
-        "Conducted keyword research, added negatives, and refreshed ad copies regularly.",
-        "Managed campaign launches, QA checks, pacing, budgets, and bid adjustments."
+        "Optimized bids, budgets, and keywords to improve lead quality and maintain CPA.",
+        "Handled pacing, STR monitoring, performance alerts, and issue resolution.",
+        "Created comprehensive reports and ensured smooth creative trafficking."
       ]
     },
     {
       id: "exp4",
       company: "Enliven Digital",
       role: "PPC Executive",
-      period: "Jan 2020 - May 2021",
+      period: "Jan 2020 – May 2021",
+      location: "India",
       url: "https://www.enlivendigital.com",
-      description: "Managed Search, Shopping, Display, and Video campaigns from setup to reporting.",
+      description: "Managed Search, Shopping, Display, and Video campaigns from setup to optimization.",
       achievements: [
-        "Monitored CPC, CTR, conversions, and CPA to improve ROI and lead quality.",
-        "Handled daily optimizations, budget pacing, bid changes, and promo updates.",
-        "Supported sales and account managers with performance updates and projections."
+        "Conducted keyword research, ad copy testing, pacing checks, and reporting.",
+        "Analyzed CPC/CTR/Impressions/Conversions to improve ROI.",
+        "Provided data-backed insights to sales & account teams."
       ]
     }
   ],
   education: [
     {
       id: "edu1",
-      institution: "Mother Theresa College of Engineering",
-      degree: "B.Tech Mining Engineering",
-      year: "2018"
+      institution: "Mother Theresa College of Engineering & Technology",
+      degree: "B.Tech, Mining Engineering",
+      year: "2014 – 2018"
     },
     {
       id: "edu2",
       institution: "Alphores Junior College",
-      degree: "Intermediate - MPC",
-      year: "2014"
+      degree: "Intermediate MPC",
+      year: "2012 – 2014"
+    },
+    {
+      id: "edu3",
+      institution: "Vidhyadhari High School",
+      degree: "SSC",
+      year: "2012"
     }
   ],
   skills: [
     {
-      category: "Paid Platforms",
-      items: ["Google Ads", "Search Ads 360", "Bing Ads", "Meta/Facebook Ads", "Google Merchant Center"]
+      category: "Platforms & Tools",
+      items: ["Google Ads", "SA360", "Bing Ads", "Meta Ads", "Email Marketing", "GA4", "Floodlight", "GTM", "Google Merchant Center", "Shopify", "WooCommerce", "WordPress", "MS Office"]
     },
     {
-      category: "Analytics & Tools",
-      items: ["GA4", "Google Tag Manager", "Excel", "Word", "PPT", "Shopify", "WordPress"]
-    },
-    {
-      category: "Strategy",
-      items: ["Media Planning", "Funnel Strategy", "CRO Recommendations", "A/B Testing", "Budget Management", "Audience Research"]
+      category: "Competencies",
+      items: ["Data Analysis", "Conversion Tracking", "Media Planning", "Campaign Structuring", "Keyword Research", "Audience Research", "Competitor Analysis", "CRO Recommendations", "Account Audits", "Scaling Strategies", "A/B Testing", "Budget Management", "Team Management", "AI Prompting"]
     }
-  ]
+  ],
+  projects: [
+    {
+      title: "Car Log",
+      description: "AI-built premium vehicle management dashboard.",
+      link: "https://carlog-rho.vercel.app/",
+      tech: "Vercel + Supabase"
+    },
+    {
+      title: "Google SERP-Style AI Resume",
+      description: "A Google SERP themed resume using AI prompting.",
+      link: "https://saikiran-jabu-resume.vercel.app/",
+      tech: "React, Gemini AI"
+    }
+  ],
+  certifications: [
+    "Google Ads Search Certification",
+    "Google Ads Display Certification",
+    "Search Ads 360 Certification",
+    "Google Ads Shopping Certification"
+  ],
+  interests: ["Playing Chess", "Digital Art"]
 };
 
 export const PEOPLE_ALSO_ASK = [
   {
-    question: "Does Sai Kiran have experience with SA360?",
-    answer: "Yes, Sai has advanced expertise in Search Ads 360 (SA360), specifically in budget group management, bid strategy implementation, and Floodlight tracking alignment for luxury hotel clients."
+    question: "What is Sai Kiran's experience with SA360?",
+    answer: "Sai Kiran has advanced expertise in Search Ads 360 (SA360), specifically in managing budget groups, bid strategies, and aligning Floodlight tags for luxury hotel accounts."
   },
   {
-    question: "What scale of budgets has Sai Kiran managed?",
-    answer: "Sai has managed monthly budgets exceeding $500,000 for luxury hotel portfolios and other large-scale performance marketing accounts."
+    question: "How much ad spend has Sai Kiran managed?",
+    answer: "Sai has managed monthly budgets exceeding $500,000, primarily for US-based luxury hotel and resort portfolios."
   },
   {
-    question: "What certifications does Sai Kiran hold?",
-    answer: "Sai holds certifications in Google AdWords Search, Google Shopping, Google Display Ads, and Search Ads 360."
+    question: "What digital marketing tools is Sai proficient in?",
+    answer: "He is proficient in Google Ads, Bing Ads, Meta Ads, GA4, Google Tag Manager, Google Merchant Center, Shopify, and WordPress."
   },
   {
-    question: "Does Sai handle social media ads?",
-    answer: "Yes, Sai is experienced in managing Meta Ads (Facebook/Instagram) for eCommerce and lead generation, alongside his core expertise in Paid Search."
+    question: "Does Sai Kiran have experience with team management?",
+    answer: "Yes, Sai has mentored teams, led strategy sessions, and helped solve complex campaign performance issues in his recent roles."
   }
 ];
 
-export const AVATAR_URL = "https://ui-avatars.com/api/?name=Sai+Kiran+Jabu&background=0D8ABC&color=fff&size=200";
+export const AVATAR_URL = "https://i.ibb.co/z9hVWfz/Jay.jpg";
