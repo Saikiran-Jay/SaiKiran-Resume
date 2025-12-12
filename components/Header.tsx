@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Search, X, Mic, Camera, Settings, Grip } from 'lucide-react';
 
 interface HeaderProps {
@@ -6,11 +6,68 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ onSearch }) => {
-  const [searchValue, setSearchValue] = useState("Sai Kiran Jabu SEM Specialist");
+  const [searchValue, setSearchValue] = useState("");
+  const [isAnimating, setIsAnimating] = useState(true);
+  
+  // Typewriter effect refs to maintain state without triggering re-renders for logic
+  const typewriterState = useRef({
+    text: "",
+    phraseIndex: 0,
+    charIndex: 0,
+    isDeleting: false
+  });
+
+  useEffect(() => {
+    if (!isAnimating) return;
+
+    const phrases = ["Sai Kiran Jabu SEM Specialist", "Hire Top SEM Specialist"];
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    const type = () => {
+      const currentPhrase = phrases[typewriterState.current.phraseIndex];
+      const { charIndex, isDeleting } = typewriterState.current;
+
+      if (isDeleting) {
+        typewriterState.current.text = currentPhrase.substring(0, charIndex - 1);
+        typewriterState.current.charIndex = charIndex - 1;
+      } else {
+        typewriterState.current.text = currentPhrase.substring(0, charIndex + 1);
+        typewriterState.current.charIndex = charIndex + 1;
+      }
+
+      setSearchValue(typewriterState.current.text);
+
+      let typeSpeed = isDeleting ? 40 : 80;
+
+      if (!isDeleting && typewriterState.current.charIndex === currentPhrase.length) {
+        typeSpeed = 2000; // Pause at end of phrase
+        typewriterState.current.isDeleting = true;
+      } else if (isDeleting && typewriterState.current.charIndex === 0) {
+        typewriterState.current.isDeleting = false;
+        typewriterState.current.phraseIndex = (typewriterState.current.phraseIndex + 1) % phrases.length;
+        typeSpeed = 500; // Pause before next phrase
+      }
+
+      timeoutId = setTimeout(type, typeSpeed);
+    };
+
+    timeoutId = setTimeout(type, 500); // Initial start delay
+
+    return () => clearTimeout(timeoutId);
+  }, [isAnimating]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     onSearch(searchValue);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsAnimating(false);
+    setSearchValue(e.target.value);
+  };
+
+  const handleInputFocus = () => {
+    setIsAnimating(false);
   };
 
   return (
@@ -34,7 +91,8 @@ export const Header: React.FC<HeaderProps> = ({ onSearch }) => {
                <input 
                  type="text" 
                  value={searchValue}
-                 onChange={(e) => setSearchValue(e.target.value)}
+                 onChange={handleInputChange}
+                 onFocus={handleInputFocus}
                  className="flex-grow outline-none text-[16px] text-[#202124] h-full"
                />
                
@@ -44,7 +102,10 @@ export const Header: React.FC<HeaderProps> = ({ onSearch }) => {
                         <X 
                           size={24} 
                           className="text-[#70757a] cursor-pointer pr-2" 
-                          onClick={() => setSearchValue('')}
+                          onClick={() => {
+                            setSearchValue('');
+                            setIsAnimating(false);
+                          }}
                         />
                         <div className="hidden sm:block h-6 border-l border-[#dfe1e5] mx-1 mr-3"></div>
                      </>
