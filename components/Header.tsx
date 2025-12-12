@@ -72,7 +72,17 @@ export const Header: React.FC<HeaderProps> = ({ onSearch }) => {
 
   return (
     <header className="flex flex-col border-b border-[#dadce0] bg-white">
-      <div className="flex items-center justify-between p-4 sm:p-5 pb-2">
+      {/* Mobile Logo - Moved above search bar */}
+      <div className="sm:hidden px-4 pt-4 pb-1 flex justify-center">
+        <img 
+            src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
+            alt="Google" 
+            height={24} 
+            width={74}
+        />
+      </div>
+
+      <div className="flex items-center justify-between p-4 pt-2 sm:p-5 sm:pt-5 pb-2">
         {/* Logo Area */}
         <div className="flex items-center gap-4 sm:gap-8 w-full">
           <a href="/" className="hidden sm:block select-none cursor-pointer">
@@ -137,16 +147,6 @@ export const Header: React.FC<HeaderProps> = ({ onSearch }) => {
              </button>
           </div>
         </div>
-      </div>
-      
-      {/* Mobile Logo */}
-      <div className="sm:hidden px-4 pb-2 flex justify-center">
-        <img 
-            src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
-            alt="Google" 
-            height={24} 
-            width={74}
-        />
       </div>
     </header>
   );
