@@ -33,7 +33,7 @@ export const KnowledgePanel: React.FC = () => {
       </div>
 
       {/* Content Section - Pushed Down Below Image */}
-      <div className="p-4">
+      <div className="p-4 pt-8">
         <div className="flex justify-between items-start mb-2">
             <h1 className="text-3xl font-normal text-[#202124] font-google">{RESUME_DATA.name}</h1>
             <Share2 className="text-[#5f6368] cursor-pointer mt-1" size={20} />
