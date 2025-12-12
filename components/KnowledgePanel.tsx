@@ -7,35 +7,38 @@ export const KnowledgePanel: React.FC = () => {
 
   return (
     <div className="w-full md:w-[360px] border border-[#dadce0] rounded-lg overflow-hidden h-fit ml-0 md:ml-8 mb-8 md:mb-0 shadow-sm bg-white">
-      {/* Images Section (Simulated) */}
-      <div className="h-[200px] bg-gray-100 relative grid grid-cols-3 gap-0.5">
-         <div className="col-span-2 relative">
+      
+      {/* Image Grid Section - Fixed Top Position */}
+      <div className="h-[220px] bg-gray-100 relative grid grid-cols-3 gap-0.5 border-b border-gray-100">
+         <div className="col-span-2 relative h-full">
              <img 
                src={AVATAR_URL} 
                alt={RESUME_DATA.name} 
-               className="w-full h-full object-cover object-top" 
+               className="w-full h-full object-cover object-top block" 
                onError={(e) => {
                  e.currentTarget.src = fallbackImage;
                }}
              />
          </div>
-         <div className="grid grid-rows-2 gap-0.5">
-             <div className="bg-[#e8f0fe] flex flex-col items-center justify-center text-xs text-[#1967d2] font-medium p-2 text-center">
+         <div className="grid grid-rows-2 gap-0.5 h-full">
+             <div className="bg-[#e8f0fe] flex flex-col items-center justify-center text-xs text-[#1967d2] font-medium p-2 text-center h-full">
                 <Award size={20} className="mb-1" />
                 4+ Certifications
              </div>
-             <div className="bg-[#fce8e6] flex flex-col items-center justify-center text-xs text-[#c5221f] font-medium p-2 text-center">
-                $500K+ <br/> Monthly Spend
+             <div className="bg-[#fce8e6] flex flex-col items-center justify-center text-xs text-[#c5221f] font-medium p-2 text-center h-full">
+                <span className="font-bold text-sm">$500K+</span>
+                <span>Monthly Spend</span>
              </div>
          </div>
       </div>
 
+      {/* Content Section - Pushed Down Below Image */}
       <div className="p-4">
         <div className="flex justify-between items-start mb-2">
-            <h1 className="text-2xl font-normal text-[#202124] font-google">{RESUME_DATA.name}</h1>
-            <Share2 className="text-[#5f6368] cursor-pointer" size={20} />
+            <h1 className="text-3xl font-normal text-[#202124] font-google">{RESUME_DATA.name}</h1>
+            <Share2 className="text-[#5f6368] cursor-pointer mt-1" size={20} />
         </div>
-        <div className="text-[#5f6368] text-sm mb-4">
+        <div className="text-[#5f6368] text-sm mb-4 pb-4 border-b border-[#dadce0]">
             {RESUME_DATA.title}
         </div>
         
