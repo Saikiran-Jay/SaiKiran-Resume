@@ -18,6 +18,13 @@ function App() {
     console.log("Searching for:", query);
   };
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Header onSearch={handleSearch} />
@@ -38,7 +45,12 @@ function App() {
                     description="Proven track record managing $500K+ monthly ad spend. Sai Kiran Jabu optimizes SA360 & Google Ads for luxury hotels & eCommerce"
                     displayUrl={`${RESUME_DATA.contact.website || 'saikiran.dev'}/hire-now`}
                     destinationUrl="#"
-                    sitelinks={["Portfolio", "Experience", "Contact Me", "Projects"]}
+                    sitelinks={[
+                      { label: "Experience", onClick: () => scrollToSection("experience") },
+                      { label: "Education", onClick: () => scrollToSection("education") },
+                      { label: "Skills", onClick: () => scrollToSection("skills") },
+                      { label: "LinkedIn", url: "https://www.linkedin.com/in/sai-kiran-j/" }
+                    ]}
                 />
             )}
 
@@ -47,7 +59,7 @@ function App() {
 
             {/* Work Experience Results */}
             {(activeTab === Tab.ALL || activeTab === Tab.EXPERIENCE) && (
-                <>
+                <div id="experience" className="scroll-mt-6">
                     {RESUME_DATA.experience.map((exp) => (
                         <SearchResult
                             key={exp.id}
@@ -58,37 +70,45 @@ function App() {
                             breadcrumbs={[exp.company, "Careers", exp.role]}
                         />
                     ))}
-                </>
+                </div>
             )}
 
             {/* People Also Ask */}
             {activeTab === Tab.ALL && <PeopleAlsoAsk />}
 
              {/* Projects Results (Featured in All or Projects Tab) */}
-             {(activeTab === Tab.ALL || activeTab === Tab.PROJECTS) && RESUME_DATA.projects.map((project, idx) => (
-                 <SearchResult
-                    key={`proj-${idx}`}
-                    title={`${project.title} - ${project.description}`}
-                    url={project.link}
-                    description={`Tech Stack: ${project.tech}. ${project.description}`}
-                    breadcrumbs={["Projects", project.title]}
-                />
-            ))}
+             {(activeTab === Tab.ALL || activeTab === Tab.PROJECTS) && (
+                <div id="projects" className="scroll-mt-6">
+                  {RESUME_DATA.projects.map((project, idx) => (
+                    <SearchResult
+                        key={`proj-${idx}`}
+                        title={`${project.title} - ${project.description}`}
+                        url={project.link}
+                        description={`Tech Stack: ${project.tech}. ${project.description}`}
+                        breadcrumbs={["Projects", project.title]}
+                    />
+                  ))}
+                </div>
+             )}
 
             {/* Skills Results */}
-            {(activeTab === Tab.ALL || activeTab === Tab.SKILLS) && RESUME_DATA.skills.map((skill, idx) => (
-                 <SearchResult
-                    key={`skill-${idx}`}
-                    title={`Top ${skill.category} - ${RESUME_DATA.name}`}
-                    url={`https://${RESUME_DATA.contact.website}/skills/${skill.category.toLowerCase().replace(/\s+/g, '-')}`}
-                    description={`Expertise in ${skill.items.join(', ')}. Proven track record of applying these tools to drive high ROAS.`}
-                    breadcrumbs={["Skills", skill.category]}
-                />
-            ))}
+            {(activeTab === Tab.ALL || activeTab === Tab.SKILLS) && (
+                <div id="skills" className="scroll-mt-6">
+                  {RESUME_DATA.skills.map((skill, idx) => (
+                    <SearchResult
+                        key={`skill-${idx}`}
+                        title={`Top ${skill.category} - ${RESUME_DATA.name}`}
+                        url={`https://${RESUME_DATA.contact.website}/skills/${skill.category.toLowerCase().replace(/\s+/g, '-')}`}
+                        description={`Expertise in ${skill.items.join(', ')}. Proven track record of applying these tools to drive high ROAS.`}
+                        breadcrumbs={["Skills", skill.category]}
+                    />
+                  ))}
+                </div>
+            )}
 
              {/* Education & Certifications Results */}
             {(activeTab === Tab.ALL || activeTab === Tab.EDUCATION) && (
-              <>
+              <div id="education" className="scroll-mt-6">
                 {RESUME_DATA.education.map((edu) => (
                     <SearchResult
                         key={edu.id}
@@ -111,7 +131,7 @@ function App() {
                       ))}
                    </div>
                 </div>
-              </>
+              </div>
             )}
 
             {/* Footer Pagination Simulation */}

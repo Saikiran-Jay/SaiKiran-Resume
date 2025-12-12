@@ -1,12 +1,18 @@
 import React from 'react';
 import { MoreVertical, Info } from 'lucide-react';
 
+export interface Sitelink {
+  label: string;
+  url?: string;
+  onClick?: () => void;
+}
+
 interface AdResultProps {
   headline: string;
   description: string;
   displayUrl: string;
   destinationUrl: string;
-  sitelinks?: string[];
+  sitelinks?: Sitelink[];
 }
 
 export const AdResult: React.FC<AdResultProps> = ({ 
@@ -35,12 +41,29 @@ export const AdResult: React.FC<AdResultProps> = ({
         {description}
       </div>
 
-      {sitelinks && (
-        <div className="flex flex-wrap gap-2 mt-2">
+      {sitelinks && sitelinks.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2 mt-2">
           {sitelinks.map((link, idx) => (
-            <span key={idx} className="text-[#1a0dab] text-sm hover:underline cursor-pointer mr-2">
-              {link} {idx < sitelinks.length - 1 && '-'}
-            </span>
+            <React.Fragment key={idx}>
+              {link.url ? (
+                <a 
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#1a0dab] text-sm hover:underline cursor-pointer font-medium"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <button
+                  onClick={link.onClick}
+                  className="text-[#1a0dab] text-sm hover:underline cursor-pointer bg-transparent border-none p-0 font-medium"
+                >
+                  {link.label}
+                </button>
+              )}
+              {idx < sitelinks.length - 1 && <span className="text-[#5f6368] select-none">-</span>}
+            </React.Fragment>
           ))}
         </div>
       )}
