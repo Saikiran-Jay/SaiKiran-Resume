@@ -66,9 +66,9 @@ export const RESUME_DATA: ResumeData = {
     },
     {
       id: "exp4",
-      company: "ALTECH STAR SOLUTIONS Pvt Ltd.",
+      company: "Altech Star Solutions Pvt Ltd.",
       role: "PPC Executive",
-      period: "Jan 2020 – May 2021",
+      period: "Oct 2019 – May 2021",
       location: "India",
       url: "https://www.starsolutionsgroup.com",
       description: "Managed Search, Shopping, Display, and Video campaigns from setup to optimization.",
