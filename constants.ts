@@ -41,7 +41,7 @@ export const RESUME_DATA: ResumeData = {
       role: "Sr. Performance Marketing Executive",
       period: "Jun 2022 – Jun 2023",
       location: "India",
-      url: "https://webdura.tech",
+      url: "https://www.webdura.in/",
       description: "Managed client onboarding and multi-channel performance strategies.",
       achievements: [
         "Handled Google Ads, Meta Ads & Email Marketing daily ops including tracking and reporting.",
@@ -66,11 +66,11 @@ export const RESUME_DATA: ResumeData = {
     },
     {
       id: "exp4",
-      company: "Enliven Digital",
+      company: "ALTECH STAR SOLUTIONS Pvt Ltd.",
       role: "PPC Executive",
       period: "Jan 2020 – May 2021",
       location: "India",
-      url: "https://www.enlivendigital.com",
+      url: "https://www.starsolutionsgroup.com",
       description: "Managed Search, Shopping, Display, and Video campaigns from setup to optimization.",
       achievements: [
         "Conducted keyword research, ad copy testing, pacing checks, and reporting.",
