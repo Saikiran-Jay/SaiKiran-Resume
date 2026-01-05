@@ -17,15 +17,15 @@ export const generateAIResponse = async (query: string): Promise<string> => {
   }
 
   const systemInstruction = `
-    You are an AI assistant representing Alex Sterling, a Senior Google Ads Specialist.
-    You are currently embedded in Alex's "SERP-style" resume website.
-    Your goal is to answer questions about Alex's professional background, skills, and experience based STRICTLY on the provided JSON data.
+    You are an AI assistant representing ${RESUME_DATA.name}, a ${RESUME_DATA.title}.
+    You are currently embedded in ${RESUME_DATA.name}'s "SERP-style" resume website.
+    Your goal is to answer questions about ${RESUME_DATA.name}'s professional background, skills, and experience based STRICTLY on the provided JSON data.
     
     Data: ${JSON.stringify(RESUME_DATA)}
     
     Rules:
-    1. Be concise, professional, and persuasive, like a high-end recruiter or Alex himself.
-    2. If the user asks about something not in the data, politely say you don't have that information but suggest contacting Alex directly.
+    1. Be concise, professional, and persuasive, like a high-end recruiter or ${RESUME_DATA.name} himself.
+    2. If the user asks about something not in the data, politely say you don't have that information but suggest contacting ${RESUME_DATA.name} directly.
     3. Format your response with simple markdown if needed (bolding key metrics).
     4. Keep answers under 100 words unless asked for a detailed breakdown.
     5. Emphasize metrics (ROAS, Budget managed, etc.) whenever relevant.
@@ -33,7 +33,7 @@ export const generateAIResponse = async (query: string): Promise<string> => {
 
   try {
     const response = await client.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3-flash-preview",
       contents: query,
       config: {
         systemInstruction: systemInstruction,

@@ -3,7 +3,7 @@ import { ResumeData } from './types';
 export const RESUME_DATA: ResumeData = {
   name: "Sai Kiran Jabu",
   title: "SEM Specialist | Performance Marketing & PPC Specialist",
-  about: "Performance Marketing & PPC Specialist with 5+ years of experience managing large-scale paid search portfolios, including luxury hotel accounts with $500K+ monthly spend. Expert in Google Ads, Bing Ads, SA360, GA4, Meta Ads, advanced bidding strategies, RLSA, Customer Match, funnel-based optimizations, and analytics-driven growth. Proven record of increasing ROAS, reducing CPA, and scaling high-performance campaigns.",
+  about: "Performance Marketing & PPC Specialist with 5+ years of experience managing large-scale paid search portfolios, including luxury hotel accounts with $800K+ monthly spend. Expert in Google Ads, Bing Ads, SA360, GA4, Meta Ads, advanced bidding strategies, RLSA, Customer Match, funnel-based optimizations, and analytics-driven growth. Proven record of increasing ROAS, reducing CPA, and scaling high-performance campaigns.",
   contact: {
     email: "saikiran.jabu95@gmail.com",
     phone: "+91 7702183149",
@@ -12,7 +12,7 @@ export const RESUME_DATA: ResumeData = {
     location: "Hyderabad, Telangana, India"
   },
   stats: [
-    { label: "Monthly Spend", value: "$500K+" },
+    { label: "Monthly Spend", value: "$800K+" },
     { label: "Experience", value: "5+ Years" },
     { label: "Certifications", value: "4" },
     { label: "ROAS Growth", value: "High" }
@@ -27,7 +27,7 @@ export const RESUME_DATA: ResumeData = {
       url: "https://www.cendyn.com",
       description: "Managing 20–25 US-based luxury hotel & resort paid search accounts.",
       achievements: [
-        "Managed $500K+ monthly spend across Google & Bing Ads via SA360.",
+        "Managed $800K+ monthly spend across Google & Bing Ads via SA360.",
         "Owned end-to-end account management, strategic planning (monthly/quarterly), and budget pacing.",
         "Expertise in SA360 budget groups, bid strategies, and Floodlight alignment.",
         "Executed RLSA, Customer Match, lookalikes, and upper-funnel strategies.",
@@ -139,7 +139,7 @@ export const PEOPLE_ALSO_ASK = [
   },
   {
     question: "How much ad spend has Sai Kiran managed?",
-    answer: "Sai has managed monthly budgets exceeding $500,000, primarily for US-based luxury hotel and resort portfolios."
+    answer: "Sai has managed monthly budgets exceeding $800,000, primarily for US-based luxury hotel and resort portfolios."
   },
   {
     question: "What digital marketing tools is Sai proficient in?",

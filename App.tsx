@@ -42,7 +42,7 @@ function App() {
             {activeTab === Tab.ALL && (
                 <AdResult 
                     headline="Hire Top SEM Specialist & Performance Marketer - Maximize ROAS Today"
-                    description="Proven track record managing $500K+ monthly ad spend. Sai Kiran Jabu optimizes SA360 & Google Ads for luxury hotels & eCommerce"
+                    description="Proven track record managing $800K+ monthly ad spend. Sai Kiran Jabu optimizes SA360 & Google Ads for luxury hotels & eCommerce"
                     displayUrl={`${RESUME_DATA.contact.website || 'saikiran.dev'}/hire-now`}
                     destinationUrl="#"
                     sitelinks={[
