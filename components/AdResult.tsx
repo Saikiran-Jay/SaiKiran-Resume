@@ -31,7 +31,7 @@ export const AdResult: React.FC<AdResultProps> = ({
         <MoreVertical size={16} className="text-[#5f6368] ml-auto cursor-pointer" />
       </div>
 
-      <a href={destinationUrl} className="block group">
+      <a href={destinationUrl} target="_blank" rel="noopener noreferrer" className="block group">
         <h3 className="text-[#1a0dab] text-xl cursor-pointer group-hover:underline mb-1">
           {headline}
         </h3>
