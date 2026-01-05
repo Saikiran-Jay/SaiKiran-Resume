@@ -43,8 +43,8 @@ function App() {
                 <AdResult 
                     headline="Hire Top SEM Specialist & Performance Marketer - Maximize ROAS Today"
                     description="Proven track record managing $800K+ monthly ad spend. Sai Kiran Jabu optimizes SA360 & Google Ads for luxury hotels & eCommerce"
-                    displayUrl={`${RESUME_DATA.contact.website || 'saikiran.dev'}/hire-now`}
-                    destinationUrl="#"
+                    displayUrl="linkedin.com/in/sai-kiran-j/"
+                    destinationUrl="https://www.linkedin.com/in/sai-kiran-j/"
                     sitelinks={[
                       { label: "Experience", onClick: () => scrollToSection("experience") },
                       { label: "Education", onClick: () => scrollToSection("education") },
