@@ -3,7 +3,7 @@ import { ResumeData } from './types';
 export const RESUME_DATA: ResumeData = {
   name: "Sai Kiran Jabu",
   title: "SEM Specialist | Performance Marketing & PPC Specialist",
-  about: "Performance Marketing & PPC Specialist with 5+ years of experience managing large-scale paid search portfolios, including luxury hotel accounts with $800K+ monthly spend. Expert in Google Ads, Bing Ads, SA360, GA4, Meta Ads, advanced bidding strategies, RLSA, Customer Match, funnel-based optimizations, and analytics-driven growth. Proven record of increasing ROAS, reducing CPA, and scaling high-performance campaigns.",
+  about: "Performance Marketing & PPC Specialist with 6 years of experience managing large-scale paid search portfolios, including luxury hotel accounts with $800K+ monthly spend. Expert in Google Ads, Bing Ads, SA360, GA4, Meta Ads, advanced bidding strategies, RLSA, Customer Match, funnel-based optimizations, and analytics-driven growth. Proven record of increasing ROAS, reducing CPA, and scaling high-performance campaigns.",
   contact: {
     email: "saikiran.jabu95@gmail.com",
     phone: "+91 7702183149",
@@ -13,7 +13,7 @@ export const RESUME_DATA: ResumeData = {
   },
   stats: [
     { label: "Monthly Spend", value: "$800K+" },
-    { label: "Experience", value: "5+ Years" },
+    { label: "Experience", value: "6 Years" },
     { label: "Certifications", value: "4" },
     { label: "ROAS Growth", value: "High" }
   ],

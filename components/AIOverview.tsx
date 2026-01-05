@@ -9,7 +9,7 @@ export const AIOverview: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [hasAsked, setHasAsked] = useState(false);
 
-  const defaultSummary = "**Sai Kiran Jabu** is a **Performance Marketing & PPC Specialist** based in Hyderabad with **5+ years of experience**. He currently manages **$800K+ monthly spend** for luxury hotel clients at Cendyn. \n\nKey Highlights:\n*   **Platforms:** Google Ads, SA360, Bing Ads, Meta Ads, GA4.\n*   **Expertise:** Advanced bidding strategies, RLSA, Customer Match, and funnel-based optimizations.\n*   **Projects:** Creator of 'Car Log' (AI Dashboard) and this SERP-style resume.\n*   **Certifications:** Google Ads Search, Display, SA360, and Shopping.";
+  const defaultSummary = "**Sai Kiran Jabu** is a **Performance Marketing & PPC Specialist** based in Hyderabad with **6 years of experience**. He currently manages **$800K+ monthly spend** for luxury hotel clients at Cendyn. \n\nKey Highlights:\n*   **Platforms:** Google Ads, SA360, Bing Ads, Meta Ads, GA4.\n*   **Expertise:** Advanced bidding strategies, RLSA, Customer Match, and funnel-based optimizations.\n*   **Projects:** Creator of 'Car Log' (AI Dashboard) and this SERP-style resume.\n*   **Certifications:** Google Ads Search, Display, SA360, and Shopping.";
 
   const handleAsk = async (e: React.FormEvent) => {
     e.preventDefault();
