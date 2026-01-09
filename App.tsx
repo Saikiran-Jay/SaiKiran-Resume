@@ -6,15 +6,16 @@ import { AdResult } from './components/AdResult';
 import { KnowledgePanel } from './components/KnowledgePanel';
 import { AIOverview } from './components/AIOverview';
 import { PeopleAlsoAsk } from './components/PeopleAlsoAsk';
+import { CaseStudyCard } from './components/CaseStudyCard';
 import { RESUME_DATA } from './constants';
 import { Tab } from './types';
+import { FileText, ChevronRight } from 'lucide-react';
 
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>(Tab.ALL);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSearch = (query: string) => {
-    // In a real app, this would filter results.
     console.log("Searching for:", query);
   };
 
@@ -23,6 +24,14 @@ function App() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  };
+
+  const navigateToCaseStudy = (id: string) => {
+    setActiveTab(Tab.CASE_STUDIES);
+    // Use a small timeout to ensure the tab has rendered before scrolling
+    setTimeout(() => {
+      scrollToSection(id);
+    }, 100);
   };
 
   return (
@@ -56,6 +65,46 @@ function App() {
 
             {/* AI Overview */}
             {activeTab === Tab.ALL && <AIOverview />}
+
+            {/* Case Studies Section - Rich Snippet for "All" Tab */}
+            {activeTab === Tab.ALL && (
+              <div className="mb-8 max-w-[600px]">
+                <div className="flex items-center gap-2 mb-3 text-[#202124] font-google text-xl">
+                  <FileText className="text-[#1a73e8]" size={20} />
+                  <h3>Featured Case Studies</h3>
+                </div>
+                <div className="grid grid-cols-1 gap-3">
+                  {RESUME_DATA.caseStudies.map((cs) => (
+                    <div 
+                      key={cs.id} 
+                      className="border border-[#dadce0] rounded-xl p-4 hover:shadow-md transition-shadow cursor-pointer" 
+                      onClick={() => navigateToCaseStudy(cs.id)}
+                    >
+                       <div className="text-[#1a0dab] font-medium mb-1 hover:underline">{cs.title}</div>
+                       <div className="text-xs text-[#5f6368] mb-2 uppercase tracking-wider">{cs.subtitle}</div>
+                       <div className="text-sm text-[#4d5156] line-clamp-2">{cs.takeaway}</div>
+                       <div className="mt-2 flex items-center text-xs text-[#1a73e8] font-medium">
+                         Read full case study <ChevronRight size={14} />
+                       </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Case Studies Detailed Results - "Case Studies" Tab */}
+            {activeTab === Tab.CASE_STUDIES && (
+               <div id="case-studies-list" className="scroll-mt-6">
+                 <h2 className="text-[#202124] text-xl mb-6 font-google">Featured Case Studies</h2>
+                 {RESUME_DATA.caseStudies.map((cs, idx) => (
+                   <CaseStudyCard 
+                     key={cs.id} 
+                     caseStudy={cs} 
+                     label={`Case Study ${idx + 1}`}
+                   />
+                 ))}
+               </div>
+            )}
 
             {/* Work Experience Results */}
             {(activeTab === Tab.ALL || activeTab === Tab.EXPERIENCE) && (
@@ -151,9 +200,9 @@ function App() {
             </div>
             <div className="flex justify-center gap-4 text-[#4285f4] text-sm font-medium mb-10">
                 <span className="text-black">1</span>
-                <span className="cursor-pointer hover:underline">2</span>
-                <span className="cursor-pointer hover:underline">3</span>
-                <span className="cursor-pointer hover:underline">Next</span>
+                <span className="cursor-pointer hover:underline" onClick={() => setActiveTab(Tab.CASE_STUDIES)}>2</span>
+                <span className="cursor-pointer hover:underline" onClick={() => setActiveTab(Tab.EXPERIENCE)}>3</span>
+                <span className="cursor-pointer hover:underline" onClick={() => setActiveTab(Tab.CASE_STUDIES)}>Next</span>
             </div>
         </main>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Briefcase, GraduationCap, Code, Image as ImageIcon, MoreVertical } from 'lucide-react';
+import { Search, Briefcase, GraduationCap, Code, Image as ImageIcon, FileText, MoreVertical } from 'lucide-react';
 import { Tab } from '../types';
 
 interface TabsProps {
@@ -10,6 +10,7 @@ interface TabsProps {
 export const Tabs: React.FC<TabsProps> = ({ activeTab, onTabChange }) => {
   const tabs = [
     { id: Tab.ALL, icon: Search, label: "All" },
+    { id: Tab.CASE_STUDIES, icon: FileText, label: "Case Studies" },
     { id: Tab.EXPERIENCE, icon: Briefcase, label: "Experience" },
     { id: Tab.SKILLS, icon: Code, label: "Skills" },
     { id: Tab.EDUCATION, icon: GraduationCap, label: "Education" },

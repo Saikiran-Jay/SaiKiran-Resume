@@ -8,7 +8,7 @@ export const RESUME_DATA: ResumeData = {
     email: "saikiran.jabu95@gmail.com",
     phone: "+91 7702183149",
     linkedin: "www.linkedin.com/in/sai-kiran-j",
-    website: "saikiran-jabu.dev", // Placeholder for portfolio if not provided, used for display URL
+    website: "saikiran-jabu.dev", 
     location: "Hyderabad, Telangana, India"
   },
   stats: [
@@ -121,6 +121,67 @@ export const RESUME_DATA: ResumeData = {
       description: "A Google SERP themed resume using AI prompting.",
       link: "https://saikiran-jabu-resume.vercel.app/",
       tech: "React, Gemini AI"
+    }
+  ],
+  caseStudies: [
+    {
+      id: "cs1",
+      title: "Landing Page A/B Test",
+      subtitle: "Offer Hub vs. Homepage for High-Intent Search Traffic",
+      background: "A hotel with strong branded search demand wanted to understand whether paid search users convert better when sent to a generic homepage or a centralized offers page.",
+      question: "Should high-intent search users land on a homepage for a general brand overview, or on an offers hub that immediately presents booking incentives?",
+      approach: [
+        "Variant A: Homepage (Brand messaging and standard booking path)",
+        "Variant B: Offers Hub (Live promotions and clear pricing cues)",
+        "Controls: Bids, audiences, and keywords remained unchanged"
+      ],
+      results: [
+        "22% higher booking conversion rate",
+        "19% increase in revenue per click",
+        "17% reduction in bounce rate"
+      ],
+      impact: "Branded search revenue increased by 21% in the following quarter.",
+      takeaway: "Immediate access to relevant offers reduces friction and drives stronger booking performance."
+    },
+    {
+      id: "cs2",
+      title: "Bid Strategy A/B Test",
+      subtitle: "Efficiency vs. Scale in Branded Search",
+      background: "A well-known brand was running branded search campaigns on Maximize Conversion Value, delivering strong efficiency with ROAS between 18x to 21x. While profitable, volume was constrained.",
+      question: "Could a shift in bid strategy unlock additional demand and revenue, even if it meant a reduction in ROAS?",
+      approach: [
+        "Control: Maximize Conversion Value (efficiency-focused)",
+        "Test: Maximize Clicks (volume and visibility-focused)",
+        "Test Controls: All other elements including keywords, copy, and landing pages were held constant."
+      ],
+      results: [
+        "+26% increase in click volume via higher impression share",
+        "+18% improvement in CTR reflecting stronger visibility",
+        "+10% lift in CVR as high-intent branded users entered the funnel",
+        "+22% increase in total revenue from higher booking volume"
+      ],
+      impact: "Revenue growth outweighed efficiency loss. ROAS remained very strong at approximately 14x, exceeding profitability benchmarks.",
+      takeaway: "Highest ROAS is not always the same as Maximum Revenue. Strategic bid testing can unlock growth while maintaining healthy returns."
+    },
+    {
+      id: "cs3",
+      title: "Brand Keyword Match Type Optimization",
+      subtitle: "Exact Match vs. Phrase Match",
+      background: "Branded campaigns mixed match types, causing CPC volatility and limiting visibility by intent.",
+      question: "What is the impact of separating exact and phrase match brand keywords on CPC stability and booking efficiency?",
+      approach: [
+        "Phase 1: Search Term Refinement and Negative Keywords",
+        "Phase 2: Segmented Ad Groups for Exact and Phrase match",
+        "Duration: 3-month trial to ensure statistical significance"
+      ],
+      results: [
+        "23% lower and more stable CPCs",
+        "19% higher CTR",
+        "15% higher conversion rate",
+        "35% more bookings"
+      ],
+      impact: "Paused phrase match and consolidated budget into exact match for maximum ROI.",
+      takeaway: "For strong brand demand, precision with Exact Match outperforms expansion via Phrase Match."
     }
   ],
   certifications: [

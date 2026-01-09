@@ -28,6 +28,18 @@ export interface Project {
   tech: string;
 }
 
+export interface CaseStudy {
+  id: string;
+  title: string;
+  subtitle: string;
+  background: string;
+  question: string;
+  approach: string[];
+  results: string[];
+  impact: string;
+  takeaway: string;
+}
+
 export interface Contact {
   email: string;
   phone: string;
@@ -44,6 +56,7 @@ export interface ResumeData {
   education: Education[];
   skills: Skill[];
   projects: Project[];
+  caseStudies: CaseStudy[];
   certifications: string[];
   interests: string[];
   contact: Contact;
@@ -59,4 +72,5 @@ export enum Tab {
   SKILLS = 'Skills',
   EDUCATION = 'Education',
   PROJECTS = 'Projects',
+  CASE_STUDIES = 'Case Studies',
 }
