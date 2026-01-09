@@ -9,7 +9,7 @@ import { PeopleAlsoAsk } from './components/PeopleAlsoAsk';
 import { CaseStudyCard } from './components/CaseStudyCard';
 import { RESUME_DATA, AVATAR_URL } from './constants';
 import { Tab } from './types';
-import { FileText, ChevronRight, Star, ExternalLink } from 'lucide-react';
+import { FileText, ChevronRight, Star, ExternalLink, TrendingUp, BarChart3, Zap } from 'lucide-react';
 
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>(Tab.ALL);
@@ -49,6 +49,10 @@ function App() {
     }, 100);
   };
 
+  // Shadow classes for the authentic Google Shopping UI look
+  const cardShadowClass = "shadow-[0_1px_6px_rgba(32,33,36,0.28)] dark:shadow-[0_1px_6px_rgba(0,0,0,0.4)]";
+  const badgeClass = "absolute top-2 left-2 bg-white/90 dark:bg-black/70 px-1.5 py-0.5 rounded text-[9px] font-bold shadow-[0_1px_3px_rgba(0,0,0,0.2)] dark:shadow-[0_1px_3px_rgba(0,0,0,0.5)] transition-all";
+
   return (
     <div className="min-h-screen bg-white dark:bg-[#202124] flex flex-col transition-colors duration-200">
       <Header onSearch={handleSearch} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
@@ -68,11 +72,15 @@ function App() {
                   </div>
                   <ExternalLink size={14} className="text-[#70757a] dark:text-[#bdc1c6]" />
                 </div>
-                <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                  <div className="flex-shrink-0 w-[160px] border border-[#dadce0] dark:border-[#3c4043] rounded-lg overflow-hidden bg-white dark:bg-[#303134] shadow-sm">
+                <div className="flex gap-4 overflow-x-auto pb-4 px-1 scrollbar-hide">
+                  {/* Profile Card - Updated with LinkedIn redirect and 9k+ ratings */}
+                  <div 
+                    onClick={() => window.open(`https://${RESUME_DATA.contact.linkedin}`, '_blank')}
+                    className={`cursor-pointer flex-shrink-0 w-[160px] border border-[#dadce0] dark:border-[#3c4043] rounded-lg overflow-hidden bg-white dark:bg-[#303134] ${cardShadowClass}`}
+                  >
                     <div className="h-[160px] bg-gray-100 dark:bg-[#202124] relative">
                       <img src={AVATAR_URL} alt="Sai Kiran Jabu" className="w-full h-full object-cover" />
-                      <div className="absolute top-2 left-2 bg-white/80 dark:bg-black/60 px-1.5 py-0.5 rounded text-[9px] font-bold">Top Choice</div>
+                      <div className={badgeClass}>Top Choice</div>
                     </div>
                     <div className="p-2">
                       <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">PPC Specialist</div>
@@ -82,21 +90,71 @@ function App() {
                         <div className="flex text-[#fbbc05]">
                           {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="currentColor" />)}
                         </div>
-                        <span className="text-[10px] text-[#70757a] dark:text-[#bdc1c6]">(64)</span>
+                        <span className="text-[10px] text-[#70757a] dark:text-[#bdc1c6]">(9k+)</span>
                       </div>
                       <div className="text-[12px] font-bold text-[#202124] dark:text-[#e8eaed]">Open for Hire</div>
-                      <div className="text-[10px] text-[#70757a] dark:text-[#bdc1c6] mt-1">LinkedIn · Verified</div>
                     </div>
                   </div>
-                  {/* Stats Card */}
-                  <div className="flex-shrink-0 w-[160px] border border-[#dadce0] dark:border-[#3c4043] rounded-lg overflow-hidden bg-white dark:bg-[#303134] shadow-sm">
-                    <div className="h-[160px] bg-[#e8f0fe] dark:bg-[#1967d2]/20 flex flex-col items-center justify-center p-4 text-center">
+
+                  {/* Case Study Card 1: Landing Page */}
+                  <div onClick={() => navigateToCaseStudy("cs1")} className={`cursor-pointer flex-shrink-0 w-[160px] border border-[#dadce0] dark:border-[#3c4043] rounded-lg overflow-hidden bg-white dark:bg-[#303134] ${cardShadowClass}`}>
+                    <div className="h-[160px] bg-[#e6f4ea] dark:bg-[#188038]/20 flex flex-col items-center justify-center p-4 text-center relative">
+                       <div className={badgeClass}>Case Study 1</div>
+                       <TrendingUp className="text-[#188038] dark:text-[#81c995] mb-2" size={24} />
+                       <div className="text-[24px] font-bold text-[#188038] dark:text-[#81c995]">+22%</div>
+                       <div className="text-[10px] font-medium text-[#188038] dark:text-[#81c995]">CVR Lift</div>
+                    </div>
+                    <div className="p-2">
+                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">LP Optimization</div>
+                      <div className="text-[11px] leading-tight text-[#4d5156] dark:text-[#bdc1c6] mt-1 line-clamp-2">
+                        Landing Page A/B test: Offer Hub vs Homepage conversion results.
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Case Study Card 2: Bid Strategy */}
+                  <div onClick={() => navigateToCaseStudy("cs2")} className={`cursor-pointer flex-shrink-0 w-[160px] border border-[#dadce0] dark:border-[#3c4043] rounded-lg overflow-hidden bg-white dark:bg-[#303134] ${cardShadowClass}`}>
+                    <div className="h-[160px] bg-[#fef7e0] dark:bg-[#fbbc04]/20 flex flex-col items-center justify-center p-4 text-center relative">
+                       <div className={badgeClass}>Case Study 2</div>
+                       <BarChart3 className="text-[#b06000] dark:text-[#fde293] mb-2" size={24} />
+                       <div className="text-[24px] font-bold text-[#b06000] dark:text-[#fde293]">+26%</div>
+                       <div className="text-[10px] font-medium text-[#b06000] dark:text-[#fde293]">Click Volume Growth</div>
+                    </div>
+                    <div className="p-2">
+                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">Scaling Strategy</div>
+                      <div className="text-[11px] leading-tight text-[#4d5156] dark:text-[#bdc1c6] mt-1 line-clamp-2">
+                        Efficiency vs Scale: Unlocking demand through strategic bidding.
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Case Study Card 3: Match Type */}
+                  <div onClick={() => navigateToCaseStudy("cs3")} className={`cursor-pointer flex-shrink-0 w-[160px] border border-[#dadce0] dark:border-[#3c4043] rounded-lg overflow-hidden bg-white dark:bg-[#303134] ${cardShadowClass}`}>
+                    <div className="h-[160px] bg-[#fce8e6] dark:bg-[#ea4335]/20 flex flex-col items-center justify-center p-4 text-center relative">
+                       <div className={badgeClass}>Case Study 3</div>
+                       <Zap className="text-[#c5221f] dark:text-[#f28b82] mb-2" size={24} />
+                       <div className="text-[24px] font-bold text-[#c5221f] dark:text-[#f28b82]">35%</div>
+                       <div className="text-[10px] font-medium text-[#c5221f] dark:text-[#f28b82]">More Bookings</div>
+                    </div>
+                    <div className="p-2">
+                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">Match Type Test</div>
+                      <div className="text-[11px] leading-tight text-[#4d5156] dark:text-[#bdc1c6] mt-1 line-clamp-2">
+                        Exact vs Phrase: Stabilizing CPC and maximizing brand booking ROI.
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Monthly Spend Managed Card (Moved to Last) */}
+                  <div className={`flex-shrink-0 w-[160px] border border-[#dadce0] dark:border-[#3c4043] rounded-lg overflow-hidden bg-white dark:bg-[#303134] ${cardShadowClass}`}>
+                    <div className="h-[160px] bg-[#e8f0fe] dark:bg-[#1967d2]/20 flex flex-col items-center justify-center p-4 text-center relative">
                        <div className="text-[24px] font-bold text-[#1a73e8] dark:text-[#8ab4f8]">$800K+</div>
                        <div className="text-[10px] font-medium text-[#1a73e8] dark:text-[#8ab4f8]">Monthly Spend Managed</div>
                     </div>
                     <div className="p-2">
-                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">Performance Stats</div>
-                      <div className="text-[12px] text-[#202124] dark:text-[#e8eaed]">Luxury Hotel Exp.</div>
+                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">Strategic Management</div>
+                      <div className="text-[11px] leading-tight text-[#4d5156] dark:text-[#bdc1c6] mt-1 line-clamp-2">
+                        Plan and pace budgets, apply smart bidding, and optimize in real-time.
+                      </div>
                     </div>
                   </div>
                 </div>

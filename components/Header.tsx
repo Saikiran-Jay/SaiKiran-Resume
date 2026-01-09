@@ -64,25 +64,39 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, isDarkMode, toggleDark
 
   return (
     <header className="flex flex-col border-b border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] transition-colors">
-      <div className="sm:hidden px-4 pt-4 pb-1 flex justify-center">
+      {/* Mobile Top Bar: [Toggle] [Logo] [Sign In] */}
+      <div className="sm:hidden px-4 pt-3 pb-1 flex items-center justify-between">
+        <button 
+          onClick={toggleDarkMode} 
+          className="p-2 -ml-2 text-[#5f6368] dark:text-[#bdc1c6] focus:outline-none"
+          aria-label="Toggle dark mode"
+        >
+          {isDarkMode ? <Sun size={22} /> : <Moon size={22} />}
+        </button>
+        
         <img 
             src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
             alt="Google" 
-            height={24} 
-            width={74}
-            className="dark:invert dark:brightness-200"
+            height={26} 
+            width={80}
+            className="block"
         />
+        
+        <button className="bg-[#1a73e8] dark:bg-[#8ab4f8] text-white dark:text-[#202124] px-4 py-1.5 rounded-md font-medium text-sm">
+          Sign in
+        </button>
       </div>
 
       <div className="flex items-center justify-between p-4 pt-2 sm:p-5 sm:pt-5 pb-2">
         <div className="flex items-center gap-4 sm:gap-8 w-full">
+          {/* Desktop Logo */}
           <a href="/" className="hidden sm:block select-none cursor-pointer">
             <img 
                 src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
                 alt="Google" 
                 height={30} 
                 width={92}
-                className="mt-[-4px] dark:invert dark:brightness-200"
+                className="mt-[-4px] block"
             />
           </a>
 
