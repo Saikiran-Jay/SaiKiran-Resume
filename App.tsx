@@ -368,20 +368,6 @@ function App() {
         </aside>
 
       </div>
-      
-      {/* Mobile Footer Sticky Action */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-[#202124] border-t border-gray-200 dark:border-[#3c4043] p-3 flex justify-around shadow-[0_-2px_10px_rgba(0,0,0,0.1)] z-50 transition-colors">
-         <a href={`mailto:${RESUME_DATA.contact.email}`} className="flex flex-col items-center gap-1 text-[#5f6368] dark:text-[#bdc1c6]">
-            <span className="text-xs">Email</span>
-         </a>
-         <a href={`tel:${RESUME_DATA.contact.phone}`} className="flex flex-col items-center gap-1 text-[#5f6368] dark:text-[#bdc1c6]">
-            <span className="text-xs">Call</span>
-         </a>
-         <div className="flex flex-col items-center gap-1 text-[#1a73e8] dark:text-[#8ab4f8]">
-            <span className="text-xs font-bold">Hire Me</span>
-         </div>
-      </div>
-
     </div>
   );
 }
