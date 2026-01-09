@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Tabs } from './components/Tabs';
 import { SearchResult } from './components/SearchResult';
@@ -7,12 +7,28 @@ import { KnowledgePanel } from './components/KnowledgePanel';
 import { AIOverview } from './components/AIOverview';
 import { PeopleAlsoAsk } from './components/PeopleAlsoAsk';
 import { CaseStudyCard } from './components/CaseStudyCard';
-import { RESUME_DATA } from './constants';
+import { RESUME_DATA, AVATAR_URL } from './constants';
 import { Tab } from './types';
-import { FileText, ChevronRight } from 'lucide-react';
+import { FileText, ChevronRight, Star, ExternalLink } from 'lucide-react';
 
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>(Tab.ALL);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    return saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  });
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSearch = (query: string) => {
@@ -28,26 +44,70 @@ function App() {
 
   const navigateToCaseStudy = (id: string) => {
     setActiveTab(Tab.CASE_STUDIES);
-    // Use a small timeout to ensure the tab has rendered before scrolling
     setTimeout(() => {
       scrollToSection(id);
     }, 100);
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-      <Header onSearch={handleSearch} />
+    <div className="min-h-screen bg-white dark:bg-[#202124] flex flex-col transition-colors duration-200">
+      <Header onSearch={handleSearch} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <Tabs activeTab={activeTab} onTabChange={setActiveTab} />
       
       <div className="flex-grow flex flex-col lg:flex-row px-4 sm:px-[180px] py-6 gap-0">
         
         {/* Main Content Column */}
         <main className="flex-grow max-w-[652px]">
-            <div className="text-sm text-[#5f6368] mb-4">
+            {/* Mobile Shopping Ad Section - ONLY ON MOBILE */}
+            {activeTab === Tab.ALL && (
+              <div className="lg:hidden mb-6 overflow-hidden">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-1">
+                    <span className="text-[12px] font-bold dark:text-[#e8eaed]">Ads</span>
+                    <span className="text-[12px] text-[#70757a] dark:text-[#bdc1c6]">· Shop candidate</span>
+                  </div>
+                  <ExternalLink size={14} className="text-[#70757a] dark:text-[#bdc1c6]" />
+                </div>
+                <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                  <div className="flex-shrink-0 w-[160px] border border-[#dadce0] dark:border-[#3c4043] rounded-lg overflow-hidden bg-white dark:bg-[#303134] shadow-sm">
+                    <div className="h-[160px] bg-gray-100 dark:bg-[#202124] relative">
+                      <img src={AVATAR_URL} alt="Sai Kiran Jabu" className="w-full h-full object-cover" />
+                      <div className="absolute top-2 left-2 bg-white/80 dark:bg-black/60 px-1.5 py-0.5 rounded text-[9px] font-bold">Top Choice</div>
+                    </div>
+                    <div className="p-2">
+                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">PPC Specialist</div>
+                      <div className="text-[13px] font-bold text-[#202124] dark:text-[#e8eaed] truncate">Sai Kiran Jabu</div>
+                      <div className="flex items-center gap-1 my-0.5">
+                        <span className="text-[11px] font-bold">4.9</span>
+                        <div className="flex text-[#fbbc05]">
+                          {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="currentColor" />)}
+                        </div>
+                        <span className="text-[10px] text-[#70757a] dark:text-[#bdc1c6]">(64)</span>
+                      </div>
+                      <div className="text-[12px] font-bold text-[#202124] dark:text-[#e8eaed]">Open for Hire</div>
+                      <div className="text-[10px] text-[#70757a] dark:text-[#bdc1c6] mt-1">LinkedIn · Verified</div>
+                    </div>
+                  </div>
+                  {/* Stats Card */}
+                  <div className="flex-shrink-0 w-[160px] border border-[#dadce0] dark:border-[#3c4043] rounded-lg overflow-hidden bg-white dark:bg-[#303134] shadow-sm">
+                    <div className="h-[160px] bg-[#e8f0fe] dark:bg-[#1967d2]/20 flex flex-col items-center justify-center p-4 text-center">
+                       <div className="text-[24px] font-bold text-[#1a73e8] dark:text-[#8ab4f8]">$800K+</div>
+                       <div className="text-[10px] font-medium text-[#1a73e8] dark:text-[#8ab4f8]">Monthly Spend Managed</div>
+                    </div>
+                    <div className="p-2">
+                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">Performance Stats</div>
+                      <div className="text-[12px] text-[#202124] dark:text-[#e8eaed]">Luxury Hotel Exp.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div className="text-sm text-[#5f6368] dark:text-[#bdc1c6] mb-4">
                 About 132,000 results (0.34 seconds)
             </div>
 
-            {/* AD Result - Always show first on "All" */}
+            {/* AD Result */}
             {activeTab === Tab.ALL && (
                 <AdResult 
                     headline="Hire Top SEM Specialist & Performance Marketer - Maximize ROAS Today"
@@ -69,21 +129,21 @@ function App() {
             {/* Case Studies Section - Rich Snippet for "All" Tab */}
             {activeTab === Tab.ALL && (
               <div className="mb-8 max-w-[600px]">
-                <div className="flex items-center gap-2 mb-3 text-[#202124] font-google text-xl">
-                  <FileText className="text-[#1a73e8]" size={20} />
+                <div className="flex items-center gap-2 mb-3 text-[#202124] dark:text-[#e8eaed] font-google text-xl">
+                  <FileText className="text-[#1a73e8] dark:text-[#8ab4f8]" size={20} />
                   <h3>Featured Case Studies</h3>
                 </div>
                 <div className="grid grid-cols-1 gap-3">
                   {RESUME_DATA.caseStudies.map((cs) => (
                     <div 
                       key={cs.id} 
-                      className="border border-[#dadce0] rounded-xl p-4 hover:shadow-md transition-shadow cursor-pointer" 
+                      className="border border-[#dadce0] dark:border-[#3c4043] rounded-xl p-4 hover:shadow-md transition-shadow cursor-pointer dark:bg-[#303134]" 
                       onClick={() => navigateToCaseStudy(cs.id)}
                     >
-                       <div className="text-[#1a0dab] font-medium mb-1 hover:underline">{cs.title}</div>
-                       <div className="text-xs text-[#5f6368] mb-2 uppercase tracking-wider">{cs.subtitle}</div>
-                       <div className="text-sm text-[#4d5156] line-clamp-2">{cs.takeaway}</div>
-                       <div className="mt-2 flex items-center text-xs text-[#1a73e8] font-medium">
+                       <div className="text-[#1a0dab] dark:text-[#8ab4f8] font-medium mb-1 hover:underline">{cs.title}</div>
+                       <div className="text-xs text-[#5f6368] dark:text-[#bdc1c6] mb-2 uppercase tracking-wider">{cs.subtitle}</div>
+                       <div className="text-sm text-[#4d5156] dark:text-[#bdc1c6] line-clamp-2">{cs.takeaway}</div>
+                       <div className="mt-2 flex items-center text-xs text-[#1a73e8] dark:text-[#8ab4f8] font-medium">
                          Read full case study <ChevronRight size={14} />
                        </div>
                     </div>
@@ -95,7 +155,7 @@ function App() {
             {/* Case Studies Detailed Results - "Case Studies" Tab */}
             {activeTab === Tab.CASE_STUDIES && (
                <div id="case-studies-list" className="scroll-mt-6">
-                 <h2 className="text-[#202124] text-xl mb-6 font-google">Featured Case Studies</h2>
+                 <h2 className="text-[#202124] dark:text-[#e8eaed] text-xl mb-6 font-google">Featured Case Studies</h2>
                  {RESUME_DATA.caseStudies.map((cs, idx) => (
                    <CaseStudyCard 
                      key={cs.id} 
@@ -125,7 +185,7 @@ function App() {
             {/* People Also Ask */}
             {activeTab === Tab.ALL && <PeopleAlsoAsk />}
 
-             {/* Projects Results (Featured in All or Projects Tab) */}
+             {/* Projects Results */}
              {(activeTab === Tab.ALL || activeTab === Tab.PROJECTS) && (
                 <div id="projects" className="scroll-mt-6">
                   {RESUME_DATA.projects.map((project, idx) => (
@@ -169,12 +229,12 @@ function App() {
                 ))}
                 
                 {/* Certifications Block */}
-                <div className="mb-8 max-w-[600px] border border-[#dadce0] rounded-lg p-4">
-                   <h3 className="text-lg text-[#202124] mb-2">Certifications</h3>
+                <div className="mb-8 max-w-[600px] border border-[#dadce0] dark:border-[#3c4043] rounded-lg p-4 dark:bg-[#303134]">
+                   <h3 className="text-lg text-[#202124] dark:text-[#e8eaed] mb-2 font-google">Certifications</h3>
                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {RESUME_DATA.certifications.map((cert, i) => (
-                        <div key={i} className="flex items-center gap-2 text-sm text-[#4d5156]">
-                           <span className="w-1.5 h-1.5 bg-[#1a73e8] rounded-full"></span>
+                        <div key={i} className="flex items-center gap-2 text-sm text-[#4d5156] dark:text-[#bdc1c6]">
+                           <span className="w-1.5 h-1.5 bg-[#1a73e8] dark:bg-[#8ab4f8] rounded-full"></span>
                            {cert}
                         </div>
                       ))}
@@ -198,8 +258,8 @@ function App() {
                     <span className="text-[#ea4335]">e</span>
                  </div>
             </div>
-            <div className="flex justify-center gap-4 text-[#4285f4] text-sm font-medium mb-10">
-                <span className="text-black">1</span>
+            <div className="flex justify-center gap-4 text-[#4285f4] dark:text-[#8ab4f8] text-sm font-medium mb-10">
+                <span className="text-black dark:text-[#e8eaed]">1</span>
                 <span className="cursor-pointer hover:underline" onClick={() => setActiveTab(Tab.CASE_STUDIES)}>2</span>
                 <span className="cursor-pointer hover:underline" onClick={() => setActiveTab(Tab.EXPERIENCE)}>3</span>
                 <span className="cursor-pointer hover:underline" onClick={() => setActiveTab(Tab.CASE_STUDIES)}>Next</span>
@@ -214,14 +274,14 @@ function App() {
       </div>
       
       {/* Mobile Footer Sticky Action */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-3 flex justify-around shadow-[0_-2px_10px_rgba(0,0,0,0.1)] z-50">
-         <a href={`mailto:${RESUME_DATA.contact.email}`} className="flex flex-col items-center gap-1 text-[#5f6368]">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-[#202124] border-t border-gray-200 dark:border-[#3c4043] p-3 flex justify-around shadow-[0_-2px_10px_rgba(0,0,0,0.1)] z-50 transition-colors">
+         <a href={`mailto:${RESUME_DATA.contact.email}`} className="flex flex-col items-center gap-1 text-[#5f6368] dark:text-[#bdc1c6]">
             <span className="text-xs">Email</span>
          </a>
-         <a href={`tel:${RESUME_DATA.contact.phone}`} className="flex flex-col items-center gap-1 text-[#5f6368]">
+         <a href={`tel:${RESUME_DATA.contact.phone}`} className="flex flex-col items-center gap-1 text-[#5f6368] dark:text-[#bdc1c6]">
             <span className="text-xs">Call</span>
          </a>
-         <div className="flex flex-col items-center gap-1 text-[#1a73e8]">
+         <div className="flex flex-col items-center gap-1 text-[#1a73e8] dark:text-[#8ab4f8]">
             <span className="text-xs font-bold">Hire Me</span>
          </div>
       </div>

@@ -18,26 +18,26 @@ export const Tabs: React.FC<TabsProps> = ({ activeTab, onTabChange }) => {
   ];
 
   return (
-    <div className="flex items-center gap-1 px-4 sm:px-[180px] border-b border-[#dadce0] text-sm text-[#5f6368] overflow-x-auto whitespace-nowrap scrollbar-hide">
+    <div className="flex items-center gap-1 px-4 sm:px-[180px] border-b border-[#dadce0] dark:border-[#3c4043] bg-white dark:bg-[#202124] text-sm text-[#5f6368] dark:text-[#bdc1c6] overflow-x-auto whitespace-nowrap scrollbar-hide transition-colors">
       {tabs.map((tab) => (
         <button
           key={tab.id}
           onClick={() => onTabChange(tab.id)}
           className={`flex items-center gap-1 px-3 py-3 border-b-[3px] transition-colors ${
             activeTab === tab.id
-              ? 'border-[#1a73e8] text-[#1a73e8] font-medium'
-              : 'border-transparent hover:text-[#202124]'
+              ? 'border-[#1a73e8] dark:border-[#8ab4f8] text-[#1a73e8] dark:text-[#8ab4f8] font-medium'
+              : 'border-transparent hover:text-[#202124] dark:hover:text-[#e8eaed]'
           }`}
         >
           <tab.icon size={16} />
           {tab.label}
         </button>
       ))}
-      <button className="flex items-center gap-1 px-3 py-3 border-b-[3px] border-transparent hover:text-[#202124]">
+      <button className="flex items-center gap-1 px-3 py-3 border-b-[3px] border-transparent hover:text-[#202124] dark:hover:text-[#e8eaed]">
         <MoreVertical size={16} />
         More
       </button>
-      <div className="ml-auto hidden sm:block text-[#5f6368] text-xs">
+      <div className="ml-auto hidden sm:block text-[#5f6368] dark:text-[#bdc1c6] text-xs">
         Tools
       </div>
     </div>
