@@ -111,14 +111,14 @@ export const RESUME_DATA: ResumeData = {
   ],
   projects: [
     {
-      title: "Car Log",
-      description: "AI-built premium vehicle management dashboard.",
+      title: "Car Log - AI-built premium vehicle management dashboard.",
+      description: "Built a premium vehicle management dashboard featuring automatic trip logging, fuel tracking, and maintenance analytics, developed entirely using AI-assisted prompting and deployed on Vercel with Supabase as the backend.",
       link: "https://carlog-rho.vercel.app/",
       tech: "Vercel + Supabase"
     },
     {
-      title: "Google SERP-Style AI Resume",
-      description: "A Google SERP themed resume using AI prompting.",
+      title: "Google SERP-themed Resume",
+      description: "created using AI prompting to showcase my search expertise, branding skills, and deep understanding of how users interact with Google Ads and SERP layouts.",
       link: "https://saikiran-jabu-resume.vercel.app/",
       tech: "React, Gemini AI"
     }

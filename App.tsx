@@ -286,10 +286,10 @@ function App() {
                   {RESUME_DATA.projects.map((project, idx) => (
                     <SearchResult
                         key={`proj-${idx}`}
-                        title={`${project.title} - ${project.description}`}
+                        title={project.title}
                         url={project.link}
-                        description={`Tech Stack: ${project.tech}. ${project.description}`}
-                        breadcrumbs={["Projects", project.title]}
+                        description={project.description}
+                        breadcrumbs={["Projects", project.title.split(' - ')[0]]}
                     />
                   ))}
                 </div>
