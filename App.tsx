@@ -52,7 +52,8 @@ function App() {
   // Authentic Google Shopping mobile card styles: 
   // Flat border, extremely subtle shadow, sharp corners for the image container.
   const cardShadowClass = "shadow-[0_1px_2px_rgba(60,64,67,0.16)] dark:shadow-[0_1px_2px_rgba(0,0,0,0.3)] border border-[#dadce0] dark:border-[#3c4043]";
-  const badgeClass = "absolute top-1.5 left-1.5 bg-white/95 dark:bg-[#303134]/95 px-1.5 py-0.5 rounded-sm text-[9px] font-bold border border-[#dadce0] dark:border-[#4d5156] text-[#202124] dark:text-[#e8eaed] uppercase tracking-tighter";
+  // Updated badgeClass: smaller text, tighter padding, and slightly rounder corners.
+  const badgeClass = "absolute top-1 left-1 bg-white/95 dark:bg-[#303134]/95 px-1 py-0.5 rounded text-[7.5px] font-bold border border-[#dadce0] dark:border-[#4d5156] text-[#202124] dark:text-[#e8eaed] uppercase tracking-tighter";
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#202124] flex flex-col transition-colors duration-200">
@@ -74,7 +75,7 @@ function App() {
                   <ExternalLink size={14} className="text-[#70757a] dark:text-[#bdc1c6]" />
                 </div>
                 <div className="flex gap-3 overflow-x-auto pb-5 px-0.5 scrollbar-hide">
-                  {/* Profile Card - Updated with LinkedIn redirect and 9k+ ratings */}
+                  {/* Profile Card - Updated Heading, Description and Ratings */}
                   <div 
                     onClick={() => window.open(`https://${RESUME_DATA.contact.linkedin}`, '_blank')}
                     className={`cursor-pointer flex-shrink-0 w-[150px] rounded-lg overflow-hidden bg-white dark:bg-[#303134] ${cardShadowClass}`}
@@ -84,7 +85,7 @@ function App() {
                       <div className={badgeClass}>Top Choice</div>
                     </div>
                     <div className="p-2.5">
-                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">PPC Specialist</div>
+                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">PPC Expert - 6 Years</div>
                       <div className="text-[12px] text-[#4d5156] dark:text-[#bdc1c6] truncate">Sai Kiran Jabu</div>
                       <div className="flex items-center gap-1 my-1">
                         <span className="text-[11px] font-bold">4.9</span>
@@ -93,7 +94,10 @@ function App() {
                         </div>
                         <span className="text-[10px] text-[#70757a] dark:text-[#bdc1c6]">(9k+)</span>
                       </div>
-                      <div className="text-[13px] font-bold text-[#202124] dark:text-[#e8eaed]">Open for Hire</div>
+                      <div className="text-[11px] text-[#4d5156] dark:text-[#bdc1c6] mt-1 line-clamp-4 leading-snug">
+                        Expertise in Google Ads, Meta Ads, Analytics, Etc.,
+                      </div>
+                      <div className="text-[13px] font-bold text-[#202124] dark:text-[#e8eaed] mt-1">Open for Hire</div>
                     </div>
                   </div>
 
@@ -107,6 +111,13 @@ function App() {
                     </div>
                     <div className="p-2.5">
                       <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">LP Optimization</div>
+                      <div className="flex items-center gap-1 my-1">
+                        <span className="text-[11px] font-bold">4.7</span>
+                        <div className="flex text-[#fbbc05]">
+                          {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="currentColor" />)}
+                        </div>
+                        <span className="text-[10px] text-[#70757a] dark:text-[#bdc1c6]">(128)</span>
+                      </div>
                       <div className="text-[11px] text-[#4d5156] dark:text-[#bdc1c6] mt-1 line-clamp-2 leading-snug">
                         Offer Hub vs Homepage A/B test results.
                       </div>
@@ -124,6 +135,13 @@ function App() {
                     </div>
                     <div className="p-2.5">
                       <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">Scaling Strategy</div>
+                      <div className="flex items-center gap-1 my-1">
+                        <span className="text-[11px] font-bold">4.8</span>
+                        <div className="flex text-[#fbbc05]">
+                          {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="currentColor" />)}
+                        </div>
+                        <span className="text-[10px] text-[#70757a] dark:text-[#bdc1c6]">(256)</span>
+                      </div>
                       <div className="text-[11px] text-[#4d5156] dark:text-[#bdc1c6] mt-1 line-clamp-2 leading-snug">
                         Efficiency vs Scale strategy unlocking demand.
                       </div>
@@ -141,6 +159,13 @@ function App() {
                     </div>
                     <div className="p-2.5">
                       <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">Match Type Test</div>
+                      <div className="flex items-center gap-1 my-1">
+                        <span className="text-[11px] font-bold">4.6</span>
+                        <div className="flex text-[#fbbc05]">
+                          {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="currentColor" />)}
+                        </div>
+                        <span className="text-[10px] text-[#70757a] dark:text-[#bdc1c6]">(94)</span>
+                      </div>
                       <div className="text-[11px] text-[#4d5156] dark:text-[#bdc1c6] mt-1 line-clamp-2 leading-snug">
                         Exact vs Phrase: CPC stabilization tactics.
                       </div>
@@ -155,9 +180,16 @@ function App() {
                        <div className="text-[10px] font-medium text-[#1a73e8] dark:text-[#8ab4f8]">Paced Monthly</div>
                     </div>
                     <div className="p-2.5">
-                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">Ad Spend</div>
+                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">Ad Budget</div>
+                      <div className="flex items-center gap-1 my-1">
+                        <span className="text-[11px] font-bold">4.5</span>
+                        <div className="flex text-[#fbbc05]">
+                          {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="currentColor" />)}
+                        </div>
+                        <span className="text-[10px] text-[#70757a] dark:text-[#bdc1c6]">(412)</span>
+                      </div>
                       <div className="text-[11px] text-[#4d5156] dark:text-[#bdc1c6] mt-1 line-clamp-2 leading-snug">
-                        Global portfolio management at scale.
+                        Plan and pace monthly budgets, apply smart bidding strategies, and adjust bids in real time to align spend with business goals while protecting efficiency across accounts and markets.
                       </div>
                       <div className="text-[12px] font-bold text-[#202124] dark:text-[#e8eaed] mt-1">Performance</div>
                     </div>
