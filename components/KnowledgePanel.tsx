@@ -6,7 +6,7 @@ export const KnowledgePanel: React.FC = () => {
   const fallbackImage = "https://ui-avatars.com/api/?name=Sai+Kiran+Jabu&background=1a73e8&color=fff&size=200";
 
   return (
-    <div className="w-full md:w-[360px] border border-[#dadce0] dark:border-[#3c4043] rounded-lg overflow-hidden h-fit ml-0 md:ml-8 mb-8 md:mb-0 shadow-sm bg-white dark:bg-[#202124] transition-colors">
+    <div className="w-full md:w-[369px] border border-[#dadce0] dark:border-[#3c4043] rounded-lg overflow-hidden h-fit mb-8 md:mb-0 shadow-sm bg-white dark:bg-[#202124] transition-colors">
       
       {/* Image Grid Section - Fixed Top Position */}
       <div className="h-[220px] bg-gray-100 dark:bg-[#303134] relative grid grid-cols-3 gap-0.5 border-b border-gray-100 dark:border-[#3c4043]">

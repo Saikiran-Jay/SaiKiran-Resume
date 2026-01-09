@@ -60,13 +60,14 @@ function App() {
       <Header onSearch={handleSearch} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <Tabs activeTab={activeTab} onTabChange={setActiveTab} />
       
-      <div className="flex-grow flex flex-col lg:flex-row px-4 sm:px-[180px] py-6 gap-0">
+      {/* Container with increased gap (lg:gap-16) to push Knowledge Panel right */}
+      <div className="flex-grow flex flex-col lg:flex-row px-4 sm:px-[180px] py-6 lg:gap-16 xl:gap-24">
         
         {/* Main Content Column */}
         <main className="flex-grow max-w-[652px]">
-            {/* Mobile Shopping Ad Section - ONLY ON MOBILE */}
+            {/* Shopping Ad Section - Visible on All Devices */}
             {activeTab === Tab.ALL && (
-              <div className="lg:hidden mb-6 overflow-hidden">
+              <div className="mb-10 overflow-hidden">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-1">
                     <span className="text-[12px] font-bold dark:text-[#e8eaed]">Ads</span>
