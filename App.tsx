@@ -211,10 +211,10 @@ function App() {
                     displayUrl="linkedin.com/in/sai-kiran-j/"
                     destinationUrl="https://www.linkedin.com/in/sai-kiran-j/"
                     sitelinks={[
-                      { label: "Experience", onClick: () => scrollToSection("experience") },
-                      { label: "Education", onClick: () => scrollToSection("education") },
-                      { label: "Skills", onClick: () => scrollToSection("skills") },
-                      { label: "LinkedIn", url: "https://www.linkedin.com/in/sai-kiran-j/" }
+                      { label: "Call", url: `tel:${RESUME_DATA.contact.phone}` },
+                      { label: "Email", url: `mailto:${RESUME_DATA.contact.email}` },
+                      { label: "LinkedIn", url: `https://${RESUME_DATA.contact.linkedin}` },
+                      { label: "WhatsApp", url: "https://wa.me/+917702183149?text=Hi%2C%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20opportunities." }
                     ]}
                 />
             )}
