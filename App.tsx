@@ -213,7 +213,7 @@ function App() {
                     sitelinks={[
                       { label: "Call Me", url: `tel:${RESUME_DATA.contact.phone}` },
                       { label: "Email Me", url: `mailto:${RESUME_DATA.contact.email}` },
-                      { label: "Whatsapp Me", url: "https://wa.me/+917702183149?text=Hi%2C%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20opportunities." },
+                      { label: "WhatsApp Me", url: "https://wa.me/+917702183149?text=Hi%2C%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20opportunities." },
                       { label: "View LinkedIn", url: `https://${RESUME_DATA.contact.linkedin}` }
                     ]}
                 />
