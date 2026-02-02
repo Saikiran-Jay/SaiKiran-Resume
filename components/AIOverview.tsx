@@ -9,7 +9,7 @@ export const AIOverview: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [hasAsked, setHasAsked] = useState(false);
 
-  const defaultSummary = "**Sai Kiran Jabu** is a **Performance Marketing & PPC Specialist** based in Hyderabad with **6 years of experience**. He currently manages **$800K+ monthly spend** for luxury hotel clients at Cendyn. \n\nKey Highlights:\n*   **Platforms:** Google Ads, SA360, Bing Ads, Meta Ads, GA4.\n*   **Expertise:** Advanced bidding strategies, RLSA, Customer Match, and funnel-based optimizations.\n*   **Case Studies:** Landing Page Testing, Bid strategy Testing, Keyword Match Type Testing.\n*   **Projects:** Creator of 'Car Log' (AI Dashboard) and this SERP-style resume.\n*   **Certifications:** Google Ads Search, Display, SA360, and Shopping.";
+  const defaultSummary = "**Sai Kiran Jabu** is a **Performance Marketing & PPC Specialist** based in Hyderabad with **6 years of experience**. He currently manages **$200k+ monthly spend** for luxury hotel clients at Cendyn. \n\nKey Highlights:\n*   **Platforms:** Google Ads, SA360, Bing Ads, Meta Ads, GA4.\n*   **Expertise:** Advanced bidding strategies, RLSA, Customer Match, and funnel-based optimizations.\n*   **Case Studies:** Landing Page Testing, Bid strategy Testing, Keyword Match Type Testing.\n*   **Projects:** Creator of 'Car Log' (AI Dashboard) and this SERP-style resume.\n*   **Certifications:** Google Ads Search, Display, SA360, and Shopping.";
 
   const handleAsk = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,13 +74,13 @@ export const AIOverview: React.FC = () => {
           <div className="mt-3 flex gap-2 overflow-x-auto scrollbar-hide">
             {!hasAsked && (
                 <>
-                <button onClick={() => { setQuery("What campaigns has Sai managed?"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white dark:bg-[#303134] border border-[#dadce0] dark:border-[#5f6368] rounded-full px-3 py-1.5 text-xs text-[#202124] dark:text-[#e8eaed] hover:bg-[#f8f9fa] dark:hover:bg-[#3c4043] transition-colors">
+                <button onClick={() => { setQuery("What campaigns has Sai managed?"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white dark:bg-[#303134] border border-[#dadce0] dark:border-[#3c4043] rounded-full px-3 py-1.5 text-xs text-[#202124] dark:text-[#e8eaed] hover:bg-[#f8f9fa] dark:hover:bg-[#3c4043] transition-colors">
                     Campaign Experience
                 </button>
-                <button onClick={() => { setQuery("What are his top skills?"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white dark:bg-[#303134] border border-[#dadce0] dark:border-[#5f6368] rounded-full px-3 py-1.5 text-xs text-[#202124] dark:text-[#e8eaed] hover:bg-[#f8f9fa] dark:hover:bg-[#3c4043] transition-colors">
+                <button onClick={() => { setQuery("What are his top skills?"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white dark:bg-[#303134] border border-[#dadce0] dark:border-[#3c4043] rounded-full px-3 py-1.5 text-xs text-[#202124] dark:text-[#e8eaed] hover:bg-[#f8f9fa] dark:hover:bg-[#3c4043] transition-colors">
                     Top Skills
                 </button>
-                <button onClick={() => { setQuery("How to contact Sai?"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white dark:bg-[#303134] border border-[#dadce0] dark:border-[#5f6368] rounded-full px-3 py-1.5 text-xs text-[#202124] dark:text-[#e8eaed] hover:bg-[#f8f9fa] dark:hover:bg-[#3c4043] transition-colors">
+                <button onClick={() => { setQuery("How to contact Sai?"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white dark:bg-[#303134] border border-[#dadce0] dark:border-[#3c4043] rounded-full px-3 py-1.5 text-xs text-[#202124] dark:text-[#e8eaed] hover:bg-[#f8f9fa] dark:hover:bg-[#3c4043] transition-colors">
                     Contact Info
                 </button>
                 </>

@@ -3,7 +3,7 @@ import { ResumeData } from './types';
 export const RESUME_DATA: ResumeData = {
   name: "Sai Kiran Jabu",
   title: "SEM Specialist | Performance Marketing & PPC Specialist",
-  about: "Performance Marketing & PPC Specialist with 6 years of experience managing large-scale paid search portfolios, including luxury hotel accounts with $800K+ monthly spend. Expert in Google Ads, Bing Ads, SA360, GA4, Meta Ads, advanced bidding strategies, RLSA, Customer Match, funnel-based optimizations, and analytics-driven growth. Proven record of increasing ROAS, reducing CPA, and scaling high-performance campaigns.",
+  about: "Performance Marketing & PPC Specialist with 6 years of experience managing large-scale paid search portfolios, including luxury hotel accounts with $200k+ monthly spend. Expert in Google Ads, Bing Ads, SA360, GA4, Meta Ads, advanced bidding strategies, RLSA, Customer Match, funnel-based optimizations, and analytics-driven growth. Proven record of increasing ROAS, reducing CPA, and scaling high-performance campaigns.",
   contact: {
     email: "saikiran.jabu95@gmail.com",
     phone: "+91 7702183149",
@@ -12,7 +12,7 @@ export const RESUME_DATA: ResumeData = {
     location: "Hyderabad, Telangana, India"
   },
   stats: [
-    { label: "Monthly Spend", value: "$800K+" },
+    { label: "Monthly Spend", value: "$200k+" },
     { label: "Experience", value: "6 Years" },
     { label: "Certifications", value: "4" },
     { label: "ROAS Growth", value: "High" }
@@ -27,7 +27,7 @@ export const RESUME_DATA: ResumeData = {
       url: "https://www.cendyn.com",
       description: "Managing 20–25 US-based luxury hotel & resort paid search accounts.",
       achievements: [
-        "Managed $800K+ monthly spend across Google & Bing Ads via SA360.",
+        "Managed $200k+ monthly spend across Google & Bing Ads via SA360.",
         "Owned end-to-end account management, strategic planning (monthly/quarterly), and budget pacing.",
         "Expertise in SA360 budget groups, bid strategies, and Floodlight alignment.",
         "Executed RLSA, Customer Match, lookalikes, and upper-funnel strategies.",
@@ -132,8 +132,7 @@ export const RESUME_DATA: ResumeData = {
       question: "Should high-intent search users land on a homepage for a general brand overview, or on an offers hub that immediately presents booking incentives?",
       approach: [
         "Variant A: Homepage (Brand messaging and standard booking path)",
-        "Variant B: Offers Hub (Live promotions and clear pricing cues)",
-        "Controls: Bids, audiences, and keywords remained unchanged"
+        "Variant B: Offers Hub (Live promotions and clear pricing cues)"
       ],
       results: [
         "22% higher booking conversion rate",
@@ -151,8 +150,7 @@ export const RESUME_DATA: ResumeData = {
       question: "Could a shift in bid strategy unlock additional demand and revenue, even if it meant a reduction in ROAS?",
       approach: [
         "Control: Maximize Conversion Value (efficiency-focused)",
-        "Test: Maximize Clicks (volume and visibility-focused)",
-        "Test Controls: All other elements including keywords, copy, and landing pages were held constant."
+        "Test: Maximize Clicks (volume and visibility-focused)"
       ],
       results: [
         "+26% increase in click volume via higher impression share",
@@ -200,7 +198,7 @@ export const PEOPLE_ALSO_ASK = [
   },
   {
     question: "How much ad spend has Sai Kiran managed?",
-    answer: "Sai has managed monthly budgets exceeding $800,000, primarily for US-based luxury hotel and resort portfolios."
+    answer: "Sai has managed monthly budgets exceeding $200k+, primarily for US-based luxury hotel and resort portfolios."
   },
   {
     question: "What digital marketing tools is Sai proficient in?",

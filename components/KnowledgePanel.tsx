@@ -26,7 +26,7 @@ export const KnowledgePanel: React.FC = () => {
                 4+ Certifications
              </div>
              <div className="bg-[#fce8e6] dark:bg-[#ea4335]/20 flex flex-col items-center justify-center text-xs text-[#c5221f] dark:text-[#f28b82] font-medium p-2 text-center h-full">
-                <span className="font-bold text-sm">$800K+</span>
+                <span className="font-bold text-sm">$200k+</span>
                 <span>Monthly Spend</span>
              </div>
          </div>

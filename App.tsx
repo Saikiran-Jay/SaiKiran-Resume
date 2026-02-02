@@ -177,7 +177,7 @@ function App() {
                   {/* Monthly Spend Managed Card */}
                   <div className={`flex-shrink-0 w-[150px] rounded-lg overflow-hidden bg-white dark:bg-[#303134] ${cardShadowClass}`}>
                     <div className="h-[150px] bg-[#e8f0fe] dark:bg-[#1967d2]/5 flex flex-col items-center justify-center p-4 text-center relative">
-                       <div className="text-[22px] font-bold text-[#1a73e8] dark:text-[#8ab4f8]">$800K+</div>
+                       <div className="text-[22px] font-bold text-[#1a73e8] dark:text-[#8ab4f8]">$200k+</div>
                        <div className="text-[10px] font-medium text-[#1a73e8] dark:text-[#8ab4f8]">Paced Monthly</div>
                     </div>
                     <div className="p-2.5">
@@ -207,7 +207,7 @@ function App() {
             {activeTab === Tab.ALL && (
                 <AdResult 
                     headline="Hire Top SEM Specialist & Performance Marketer - Maximize ROAS Today"
-                    description="Proven track record managing $800K+ monthly ad spend. Sai Kiran Jabu optimizes SA360 & Google Ads for luxury hotels & eCommerce"
+                    description="Proven track record managing $200k+ monthly ad spend. Sai Kiran Jabu optimizes SA360 & Google Ads for luxury hotels & eCommerce"
                     displayUrl="linkedin.com/in/sai-kiran-j/"
                     destinationUrl="https://www.linkedin.com/in/sai-kiran-j/"
                     sitelinks={[
