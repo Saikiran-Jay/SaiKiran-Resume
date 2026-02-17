@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Sparkles, ChevronDown, ChevronUp, Send } from 'lucide-react';
 import { generateAIResponse } from '../services/geminiService';
+import { SIDEBAR_SKILLS } from '../constants';
+import { SkillBadge } from './SkillBadge';
 
 export const AIOverview: React.FC = () => {
   const [expanded, setExpanded] = useState(true);
@@ -9,7 +11,7 @@ export const AIOverview: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [hasAsked, setHasAsked] = useState(false);
 
-  const defaultSummary = "**Sai Kiran Jabu** is a **Performance Marketing & PPC Specialist** based in Hyderabad with **6 years of experience**. He currently manages **$200k+ monthly spend** for luxury hotel clients at Cendyn. \n\nKey Highlights:\n*   **Platforms:** Google Ads, SA360, Bing Ads, Meta Ads, GA4.\n*   **Expertise:** Advanced bidding strategies, RLSA, Customer Match, and funnel-based optimizations.\n*   **Case Studies:** Landing Page Testing, Bid strategy Testing, Keyword Match Type Testing.\n*   **Projects:** Creator of 'Car Log' (AI Dashboard) and this SERP-style resume.\n*   **Certifications:** Google Ads Search, Display, SA360, and Shopping.";
+  const defaultSummary = "**Sai Kiran Jabu** is a **Performance Marketing & PPC Specialist** based in Hyderabad with **6 years of experience**. He currently manages **$200k+ monthly spend**.\n\nKey Highlights:\n*   **Global Reach:** Managed clients across **USA, UK, Australia, New Zealand, and Europe** (France, Germany, Italy, Spain, Sweden, Denmark, Netherlands, Portugal, Poland, Finland).\n*   **Campaign Expertise:** eCommerce, Lead Generation, Store Visits, and Appointment Bookings.\n*   **Platforms:** Google Ads, SA360, Bing Ads, Meta Ads, GA4.\n*   **Strategic Focus:** Advanced bidding strategies, RLSA, Customer Match, and funnel-based optimizations.\n*   **Projects:** Creator of 'Car Log' (AI Dashboard) and this SERP-style resume.";
 
   const handleAsk = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,6 +54,22 @@ export const AIOverview: React.FC = () => {
                       .replace(/\n/g, '<br/>') 
                 }} />
              )}
+          </div>
+
+          {/* Integrated Skills Section (Mobile Only) - Displayed below summary */}
+          <div className="lg:hidden mb-4 space-y-3 border-t border-[#dadce0]/50 dark:border-[#5f6368]/30 pt-3">
+              {SIDEBAR_SKILLS.map((section, idx) => (
+                <div key={idx}>
+                    <h4 className="text-[11px] font-bold text-[#5f6368] dark:text-[#bdc1c6] uppercase tracking-wide mb-2">
+                        {section.category}
+                    </h4>
+                    <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+                        {section.items.map((item: any, i: number) => (
+                           <SkillBadge key={i} item={item} className="flex-shrink-0 shadow-sm border-[#dadce0] dark:border-[#5f6368]" />
+                        ))}
+                    </div>
+                </div>
+              ))}
           </div>
 
           <form onSubmit={handleAsk} className="relative mt-2">

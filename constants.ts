@@ -1,9 +1,10 @@
+
 import { ResumeData } from './types';
 
 export const RESUME_DATA: ResumeData = {
   name: "Sai Kiran Jabu",
   title: "SEM Specialist | Performance Marketing & PPC Specialist",
-  about: "Performance Marketing & PPC Specialist with 6 years of experience managing large-scale paid search portfolios, including luxury hotel accounts with $200k+ monthly spend. Expert in Google Ads, Bing Ads, SA360, GA4, Meta Ads, advanced bidding strategies, RLSA, Customer Match, funnel-based optimizations, and analytics-driven growth. Proven record of increasing ROAS, reducing CPA, and scaling high-performance campaigns.",
+  about: "Performance Marketing & PPC Specialist with 6 years of experience. Managed global clients across the USA, UK, Australia, New Zealand, and Europe (France, Germany, Italy, Spain, Sweden, Denmark, Netherlands, Portugal, Poland, Finland), delivering results across eCommerce, lead generation, store visits, and appointment booking campaigns. Expert in Google Ads, SA360, GA4, Meta Ads, and advanced bidding strategies to drive ROAS and scale performance.",
   contact: {
     email: "saikiran.jabu95@gmail.com",
     phone: "+91 7702183149",
@@ -14,7 +15,7 @@ export const RESUME_DATA: ResumeData = {
   stats: [
     { label: "Monthly Spend", value: "$200k+" },
     { label: "Experience", value: "6 Years" },
-    { label: "Certifications", value: "4" },
+    { label: "Global Markets", value: "14+" },
     { label: "ROAS Growth", value: "High" }
   ],
   experience: [
@@ -107,6 +108,10 @@ export const RESUME_DATA: ResumeData = {
     {
       category: "Competencies",
       items: ["Data Analysis", "Conversion Tracking", "Media Planning", "Campaign Structuring", "Keyword Research", "Audience Research", "Competitor Analysis", "CRO Recommendations", "Account Audits", "Scaling Strategies", "A/B Testing", "Budget Management", "Team Management", "AI Prompting"]
+    },
+    {
+      category: "Certifications",
+      items: ["Google Ads Search", "Google Ads Display", "Search Ads 360", "Google Ads Shopping"]
     }
   ],
   projects: [
@@ -190,6 +195,58 @@ export const RESUME_DATA: ResumeData = {
   ],
   interests: ["Playing Chess", "Digital Art"]
 };
+
+export const SIDEBAR_SKILLS = [
+  {
+    category: "Advertising Platforms",
+    items: [
+      { name: "Google Ads", domain: "ads.google.com" },
+      { name: "SA360", domain: "searchads.google.com" },
+      { name: "Meta Ads", domain: "meta.com" },
+      { name: "Microsoft Ads", domain: "ads.microsoft.com" },
+      { name: "Email Marketing", domain: "mailchimp.com" },
+      { name: "Google Ads Editor", domain: "ads.google.com" },
+      { name: "Merchant Center", domain: "merchants.google.com" },
+      { name: "Shopify", domain: "shopify.com" },
+      { name: "WooCommerce", domain: "woocommerce.com" },
+      { name: "WordPress", domain: "wordpress.org" }
+    ]
+  },
+  {
+    category: "Analytics & Tracking",
+    items: [
+      { name: "Google Analytics", domain: "analytics.google.com" },
+      { name: "GTM", domain: "tagmanager.google.com" },
+      { name: "Floodlight", domain: "marketingplatform.google.com" },
+      { name: "Conversion Tracking", icon: "Target" },
+      { name: "SEMRush", domain: "semrush.com" },
+      { name: "Tracking Setup", icon: "Target" },
+      { name: "Data Analysis", icon: "BarChart3" },
+      { name: "Reporting & Insights", icon: "FileBarChart" },
+      { name: "Looker Studio", domain: "lookerstudio.google.com" }
+    ]
+  },
+  {
+    category: "Certifications",
+    items: [
+      { name: "Google Ads Search", domain: "skillshop.exceedlms.com" },
+      { name: "Google Ads Display", domain: "skillshop.exceedlms.com" },
+      { name: "Search Ads 360", domain: "skillshop.exceedlms.com" },
+      { name: "Google Ads Shopping", domain: "skillshop.exceedlms.com" }
+    ]
+  },
+  {
+    category: "Productivity Tools",
+    items: [
+      { name: "MS Office", domain: "office.com" },
+      { name: "ChatGPT", domain: "openai.com" },
+      { name: "Grok", domain: "x.ai" },
+      { name: "Gemini", domain: "gemini.google.com" },
+      { name: "Bard", domain: "gemini.google.com" },
+      { name: "Google Ai Studio", domain: "aistudio.google.com" }
+    ]
+  }
+];
 
 export const PEOPLE_ALSO_ASK = [
   {

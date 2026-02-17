@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { Tabs } from './components/Tabs';
 import { SearchResult } from './components/SearchResult';
@@ -7,28 +7,16 @@ import { KnowledgePanel } from './components/KnowledgePanel';
 import { AIOverview } from './components/AIOverview';
 import { PeopleAlsoAsk } from './components/PeopleAlsoAsk';
 import { CaseStudyCard } from './components/CaseStudyCard';
-import { RESUME_DATA, AVATAR_URL } from './constants';
+import { RESUME_DATA } from './constants';
 import { Tab } from './types';
-import { FileText, ChevronRight, Star, ExternalLink, TrendingUp, BarChart3, Zap } from 'lucide-react';
+import { FileText, ChevronRight } from 'lucide-react';
+import { MobileSkills } from './components/MobileSkills';
+import { ShoppingAds } from './components/ShoppingAds';
+import { useTheme } from './hooks/useTheme';
 
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>(Tab.ALL);
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  });
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
-
-  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSearch = (query: string) => {
@@ -49,12 +37,6 @@ function App() {
     }, 100);
   };
 
-  // Authentic Google Shopping mobile card styles: 
-  // Flat border, extremely subtle shadow, sharp corners for the image container.
-  const cardShadowClass = "shadow-[0_1px_2px_rgba(60,64,67,0.16)] dark:shadow-[0_1px_2px_rgba(0,0,0,0.3)] border border-[#dadce0] dark:border-[#3c4043]";
-  // Updated badgeClass: smaller text, tighter padding, and slightly rounder corners.
-  const badgeClass = "absolute top-1 left-1 bg-white/95 dark:bg-[#303134]/95 px-1 py-0.5 rounded text-[7.5px] font-bold border border-[#dadce0] dark:border-[#4d5156] text-[#202124] dark:text-[#e8eaed] uppercase tracking-tighter";
-
   return (
     <div className="min-h-screen bg-white dark:bg-[#202124] flex flex-col transition-colors duration-200">
       <Header onSearch={handleSearch} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
@@ -67,136 +49,7 @@ function App() {
         <main className="flex-grow max-w-[652px]">
             {/* Shopping Ad Section - Visible on All Devices */}
             {activeTab === Tab.ALL && (
-              <div className="mb-10 overflow-hidden">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-1">
-                    <span className="text-[12px] font-bold dark:text-[#e8eaed]">Ads</span>
-                    <span className="text-[12px] text-[#70757a] dark:text-[#bdc1c6]">· Shop candidate</span>
-                  </div>
-                  <ExternalLink size={14} className="text-[#70757a] dark:text-[#bdc1c6]" />
-                </div>
-                <div className="flex gap-3 overflow-x-auto pb-5 px-0.5 scrollbar-hide">
-                  {/* Profile Card - Updated Heading, Description and Ratings */}
-                  <div 
-                    onClick={() => window.open(`https://${RESUME_DATA.contact.linkedin}`, '_blank')}
-                    className={`cursor-pointer flex-shrink-0 w-[150px] rounded-lg overflow-hidden bg-white dark:bg-[#303134] ${cardShadowClass}`}
-                  >
-                    <div className="h-[150px] bg-gray-100 dark:bg-[#202124] relative">
-                      <img src={AVATAR_URL} alt="Sai Kiran Jabu" className="w-full h-full object-cover" />
-                      <div className={badgeClass}>Top Choice</div>
-                    </div>
-                    <div className="p-2.5">
-                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">PPC Expert - 6 Years</div>
-                      <div className="text-[12px] text-[#4d5156] dark:text-[#bdc1c6] truncate">Sai Kiran Jabu</div>
-                      <div className="flex items-center gap-1 my-1">
-                        <span className="text-[11px] font-bold">4.9</span>
-                        <div className="flex text-[#fbbc05]">
-                          {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="currentColor" />)}
-                        </div>
-                        <span className="text-[10px] text-[#70757a] dark:text-[#bdc1c6]">(9k+)</span>
-                      </div>
-                      <div className="text-[11px] text-[#4d5156] dark:text-[#bdc1c6] mt-1 line-clamp-4 leading-snug">
-                        Expertise in Google Ads, Meta Ads, Analytics, Etc.,
-                      </div>
-                      <div className="text-[13px] font-bold text-[#202124] dark:text-[#e8eaed] mt-1">Open for Hire</div>
-                    </div>
-                  </div>
-
-                  {/* Case Study Card 1: Landing Page */}
-                  <div onClick={() => navigateToCaseStudy("cs1")} className={`cursor-pointer flex-shrink-0 w-[150px] rounded-lg overflow-hidden bg-white dark:bg-[#303134] ${cardShadowClass}`}>
-                    <div className="h-[150px] bg-[#e6f4ea] dark:bg-[#188038]/5 flex flex-col items-center justify-center p-4 text-center relative">
-                       <div className={badgeClass}>Case Study 1</div>
-                       <TrendingUp className="text-[#188038] dark:text-[#81c995] mb-2" size={24} />
-                       <div className="text-[22px] font-bold text-[#188038] dark:text-[#81c995]">+22%</div>
-                       <div className="text-[10px] font-medium text-[#188038] dark:text-[#81c995]">CVR Lift</div>
-                    </div>
-                    <div className="p-2.5">
-                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">LP Optimization</div>
-                      <div className="flex items-center gap-1 my-1">
-                        <span className="text-[11px] font-bold">4.7</span>
-                        <div className="flex text-[#fbbc05]">
-                          {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="currentColor" />)}
-                        </div>
-                        <span className="text-[10px] text-[#70757a] dark:text-[#bdc1c6]">(128)</span>
-                      </div>
-                      <div className="text-[11px] text-[#4d5156] dark:text-[#bdc1c6] mt-1 line-clamp-2 leading-snug">
-                        Offer Hub vs Homepage A/B test results.
-                      </div>
-                      <div className="text-[12px] font-bold text-[#202124] dark:text-[#e8eaed] mt-1">Full Insight</div>
-                    </div>
-                  </div>
-
-                  {/* Case Study Card 2: Bid Strategy */}
-                  <div onClick={() => navigateToCaseStudy("cs2")} className={`cursor-pointer flex-shrink-0 w-[150px] rounded-lg overflow-hidden bg-white dark:bg-[#303134] ${cardShadowClass}`}>
-                    <div className="h-[150px] bg-[#fef7e0] dark:bg-[#fbbc04]/5 flex flex-col items-center justify-center p-4 text-center relative">
-                       <div className={badgeClass}>Case Study 2</div>
-                       <BarChart3 className="text-[#b06000] dark:text-[#fde293] mb-2" size={24} />
-                       <div className="text-[22px] font-bold text-[#b06000] dark:text-[#fde293]">+26%</div>
-                       <div className="text-[10px] font-medium text-[#b06000] dark:text-[#fde293]">Growth Lift</div>
-                    </div>
-                    <div className="p-2.5">
-                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">Scaling Strategy</div>
-                      <div className="flex items-center gap-1 my-1">
-                        <span className="text-[11px] font-bold">4.8</span>
-                        <div className="flex text-[#fbbc05]">
-                          {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="currentColor" />)}
-                        </div>
-                        <span className="text-[10px] text-[#70757a] dark:text-[#bdc1c6]">(256)</span>
-                      </div>
-                      <div className="text-[11px] text-[#4d5156] dark:text-[#bdc1c6] mt-1 line-clamp-2 leading-snug">
-                        Efficiency vs Scale strategy unlocking demand.
-                      </div>
-                      <div className="text-[12px] font-bold text-[#202124] dark:text-[#e8eaed] mt-1">Full Insight</div>
-                    </div>
-                  </div>
-
-                  {/* Case Study Card 3: Match Type */}
-                  <div onClick={() => navigateToCaseStudy("cs3")} className={`cursor-pointer flex-shrink-0 w-[150px] rounded-lg overflow-hidden bg-white dark:bg-[#303134] ${cardShadowClass}`}>
-                    <div className="h-[150px] bg-[#fce8e6] dark:bg-[#ea4335]/5 flex flex-col items-center justify-center p-4 text-center relative">
-                       <div className={badgeClass}>Case Study 3</div>
-                       <Zap className="text-[#c5221f] dark:text-[#f28b82] mb-2" size={24} />
-                       <div className="text-[22px] font-bold text-[#c5221f] dark:text-[#f28b82]">35%</div>
-                       <div className="text-[10px] font-medium text-[#c5221f] dark:text-[#f28b82]">Booking Lift</div>
-                    </div>
-                    <div className="p-2.5">
-                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">Match Type Test</div>
-                      <div className="flex items-center gap-1 my-1">
-                        <span className="text-[11px] font-bold">4.6</span>
-                        <div className="flex text-[#fbbc05]">
-                          {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="currentColor" />)}
-                        </div>
-                        <span className="text-[10px] text-[#70757a] dark:text-[#bdc1c6]">(94)</span>
-                      </div>
-                      <div className="text-[11px] text-[#4d5156] dark:text-[#bdc1c6] mt-1 line-clamp-2 leading-snug">
-                        Exact vs Phrase: CPC stabilization tactics.
-                      </div>
-                      <div className="text-[12px] font-bold text-[#202124] dark:text-[#e8eaed] mt-1">Full Insight</div>
-                    </div>
-                  </div>
-
-                  {/* Monthly Spend Managed Card */}
-                  <div className={`flex-shrink-0 w-[150px] rounded-lg overflow-hidden bg-white dark:bg-[#303134] ${cardShadowClass}`}>
-                    <div className="h-[150px] bg-[#e8f0fe] dark:bg-[#1967d2]/5 flex flex-col items-center justify-center p-4 text-center relative">
-                       <div className="text-[22px] font-bold text-[#1a73e8] dark:text-[#8ab4f8]">$200k+</div>
-                       <div className="text-[10px] font-medium text-[#1a73e8] dark:text-[#8ab4f8]">Paced Monthly</div>
-                    </div>
-                    <div className="p-2.5">
-                      <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">Ad Budget</div>
-                      <div className="flex items-center gap-1 my-1">
-                        <span className="text-[11px] font-bold">4.5</span>
-                        <div className="flex text-[#fbbc05]">
-                          {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="currentColor" />)}
-                        </div>
-                        <span className="text-[10px] text-[#70757a] dark:text-[#bdc1c6]">(412)</span>
-                      </div>
-                      <div className="text-[11px] text-[#4d5156] dark:text-[#bdc1c6] mt-1 line-clamp-2 leading-snug">
-                        Plan and pace monthly budgets, apply smart bidding strategies, and adjust bids in real time to align spend with business goals while protecting efficiency across accounts and markets.
-                      </div>
-                      <div className="text-[12px] font-bold text-[#202124] dark:text-[#e8eaed] mt-1">Performance</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ShoppingAds navigateToCaseStudy={navigateToCaseStudy} />
             )}
 
             <div className="text-sm text-[#5f6368] dark:text-[#bdc1c6] mb-4">
@@ -207,7 +60,7 @@ function App() {
             {activeTab === Tab.ALL && (
                 <AdResult 
                     headline="Hire Top SEM Specialist & Performance Marketer - Maximize ROAS Today"
-                    description="Proven track record managing $200k+ monthly ad spend. Sai Kiran Jabu optimizes SA360 & Google Ads for luxury hotels & eCommerce"
+                    description="Managed global clients across USA, UK, EU (10+ countries) & APAC. Delivering results for eCommerce, Lead Gen & Store Visits with $200k+ monthly spend expertise."
                     displayUrl="linkedin.com/in/sai-kiran-j/"
                     destinationUrl="https://www.linkedin.com/in/sai-kiran-j/"
                     sitelinks={[
@@ -221,6 +74,14 @@ function App() {
 
             {/* AI Overview */}
             {activeTab === Tab.ALL && <AIOverview />}
+
+            {/* MOBILE ONLY: Knowledge Panel (Entity Card Style) */}
+            {/* This appears in-stream on mobile, mimicking the 'People' entity card behavior on Google Mobile */}
+            {activeTab === Tab.ALL && (
+                <div className="lg:hidden">
+                  <MobileSkills />
+                </div>
+            )}
 
             {/* Case Studies Section - Rich Snippet for "All" Tab */}
             {activeTab === Tab.ALL && (
@@ -323,19 +184,6 @@ function App() {
                         breadcrumbs={["Education", edu.institution]}
                     />
                 ))}
-                
-                {/* Certifications Block */}
-                <div className="mb-8 max-w-[600px] border border-[#dadce0] dark:border-[#3c4043] rounded-lg p-4 dark:bg-[#303134]">
-                   <h3 className="text-lg text-[#202124] dark:text-[#e8eaed] mb-2 font-google">Certifications</h3>
-                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {RESUME_DATA.certifications.map((cert, i) => (
-                        <div key={i} className="flex items-center gap-2 text-sm text-[#4d5156] dark:text-[#bdc1c6]">
-                           <span className="w-1.5 h-1.5 bg-[#1a73e8] dark:bg-[#8ab4f8] rounded-full"></span>
-                           {cert}
-                        </div>
-                      ))}
-                   </div>
-                </div>
               </div>
             )}
 
@@ -362,7 +210,7 @@ function App() {
             </div>
         </main>
 
-        {/* Right Column - Knowledge Panel */}
+        {/* Right Column - Knowledge Panel (Desktop Only) */}
         <aside className="hidden lg:block">
             {activeTab === Tab.ALL && <KnowledgePanel />}
         </aside>

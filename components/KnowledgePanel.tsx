@@ -1,6 +1,7 @@
 import React from 'react';
-import { Share2, Globe, Phone, Mail, MapPin, ExternalLink, Award } from 'lucide-react';
-import { RESUME_DATA, AVATAR_URL } from '../constants';
+import { Share2, Phone, Mail, MapPin, ExternalLink, Globe, Github } from 'lucide-react';
+import { RESUME_DATA, AVATAR_URL, SIDEBAR_SKILLS } from '../constants';
+import { SkillBadge } from './SkillBadge';
 
 export const KnowledgePanel: React.FC = () => {
   const fallbackImage = "https://ui-avatars.com/api/?name=Sai+Kiran+Jabu&background=1a73e8&color=fff&size=200";
@@ -9,7 +10,7 @@ export const KnowledgePanel: React.FC = () => {
     <div className="w-full md:w-[369px] border border-[#dadce0] dark:border-[#3c4043] rounded-lg overflow-hidden h-fit mb-8 md:mb-0 shadow-sm bg-white dark:bg-[#202124] transition-colors">
       
       {/* Image Grid Section - Fixed Top Position */}
-      <div className="h-[220px] bg-gray-100 dark:bg-[#303134] relative grid grid-cols-3 gap-0.5 border-b border-gray-100 dark:border-[#3c4043]">
+      <div className="h-[180px] sm:h-[220px] bg-gray-100 dark:bg-[#303134] relative grid grid-cols-3 gap-0.5 border-b border-gray-100 dark:border-[#3c4043]">
          <div className="col-span-2 relative h-full">
              <img 
                src={AVATAR_URL} 
@@ -22,8 +23,8 @@ export const KnowledgePanel: React.FC = () => {
          </div>
          <div className="grid grid-rows-2 gap-0.5 h-full">
              <div className="bg-[#e8f0fe] dark:bg-[#1967d2]/20 flex flex-col items-center justify-center text-xs text-[#1967d2] dark:text-[#8ab4f8] font-medium p-2 text-center h-full">
-                <Award size={20} className="mb-1" />
-                4+ Certifications
+                <Globe size={20} className="mb-1" />
+                14+ Markets
              </div>
              <div className="bg-[#fce8e6] dark:bg-[#ea4335]/20 flex flex-col items-center justify-center text-xs text-[#c5221f] dark:text-[#f28b82] font-medium p-2 text-center h-full">
                 <span className="font-bold text-sm">$200k+</span>
@@ -105,6 +106,31 @@ export const KnowledgePanel: React.FC = () => {
                     </div>
                     <span className="text-xs text-[#202124] dark:text-[#bdc1c6] group-hover:underline">LinkedIn</span>
                 </a>
+                <a href="https://github.com/Saikiran-Jay" target="_blank" rel="noreferrer" className="flex flex-col items-center gap-1 group">
+                    <div className="w-10 h-10 rounded-full bg-[#24292e] dark:bg-[#e8eaed] text-white dark:text-[#202124] flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+                        <Github size={20} />
+                    </div>
+                    <span className="text-xs text-[#202124] dark:text-[#bdc1c6] group-hover:underline">GitHub</span>
+                </a>
+            </div>
+        </div>
+        
+        {/* SKILLS SECTION - BADGES */}
+        <div className="border-t border-[#dadce0] dark:border-[#3c4043] mt-4 pt-4">
+            <h3 className="font-bold text-[#202124] dark:text-[#e8eaed] text-lg mb-4 font-google">Skills</h3>
+            <div className="space-y-4">
+                {SIDEBAR_SKILLS.map((section, idx) => (
+                    <div key={idx}>
+                        <h4 className="text-xs font-bold text-[#5f6368] dark:text-[#bdc1c6] uppercase tracking-wide mb-2">
+                            {section.category}
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                            {section.items.map((item: any, i: number) => (
+                                <SkillBadge key={i} item={item} className="cursor-default hover:bg-gray-50 dark:hover:bg-[#3c4043] bg-white dark:bg-[#303134] border-[#dfe1e5]" />
+                            ))}
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
 
