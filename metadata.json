@@ -1,5 +1,8 @@
 {
   "name": "SaiKiran Resume",
   "description": "Sai Kiran Jabu - SEM Specialist managing $200k+ monthly ad spend. A creative resume styled like a Google SERP.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

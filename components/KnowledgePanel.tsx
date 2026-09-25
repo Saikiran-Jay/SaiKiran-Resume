@@ -124,7 +124,7 @@ export const KnowledgePanel: React.FC = () => {
                         <h4 className="text-xs font-bold text-[#5f6368] dark:text-[#bdc1c6] uppercase tracking-wide mb-2">
                             {section.category}
                         </h4>
-                        <div className="flex flex-wrap gap-2">
+                        <div className={section.category === "Projects & Builds" ? "space-y-3" : "flex flex-wrap gap-2"}>
                             {section.items.map((item: any, i: number) => (
                                 <SkillBadge key={i} item={item} className="cursor-default hover:bg-gray-50 dark:hover:bg-[#3c4043] bg-white dark:bg-[#303134] border-[#dfe1e5]" />
                             ))}

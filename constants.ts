@@ -4,7 +4,7 @@ import { ResumeData } from './types';
 export const RESUME_DATA: ResumeData = {
   name: "Sai Kiran Jabu",
   title: "SEM Specialist | Performance Marketing & PPC Specialist",
-  about: "Performance Marketing & PPC Specialist with 6 years of experience. Managed global clients across the USA, UK, Australia, New Zealand, and Europe (France, Germany, Italy, Spain, Sweden, Denmark, Netherlands, Portugal, Poland, Finland), delivering results across eCommerce, lead generation, store visits, and appointment booking campaigns. Expert in Google Ads, SA360, GA4, Meta Ads, and advanced bidding strategies to drive ROAS and scale performance.",
+  about: "Performance Marketing & PPC Specialist with 6+ years of experience. Managed global clients across the USA, UK, Australia, New Zealand, and Europe (France, Germany, Italy, Spain, Sweden, Denmark, Netherlands, Portugal, Poland, Finland), delivering results across eCommerce, lead generation, store visits, and appointment booking campaigns. Expert in Google Ads, SA360, GA4, Meta Ads, and advanced bidding strategies to drive ROAS and scale performance.",
   contact: {
     email: "saikiran.jabu95@gmail.com",
     phone: "+91 7702183149",
@@ -14,16 +14,31 @@ export const RESUME_DATA: ResumeData = {
   },
   stats: [
     { label: "Monthly Spend", value: "$200k+" },
-    { label: "Experience", value: "6 Years" },
+    { label: "Experience", value: "6+ Years" },
     { label: "Global Markets", value: "14+" },
     { label: "ROAS Growth", value: "High" }
   ],
   experience: [
     {
+      id: "exp0",
+      company: "FULL Creative Pvt. Ltd.",
+      role: "Sr. Performance Marketing Analyst",
+      period: "Feb 2026 – Present",
+      location: "Remote, India",
+      url: "https://full.io/",
+      description: "Managed paid campaigns across Google Ads and Bing Ads, focusing on performance and lead quality.",
+      achievements: [
+        "Conducted lead audits and created detailed reports to track performance and identify improvement areas.",
+        "Conducted landing page and user behavior analysis using Microsoft Clarity to improve user experience and conversion rates.",
+        "Created and analyzed performance reports, highlighting key trends, issues, and growth opportunities.",
+        "Shared regular insights and updates with stakeholders to support data-driven decision-making."
+      ]
+    },
+    {
       id: "exp1",
       company: "Cendyn India Pvt Ltd.",
       role: "SEM Specialist",
-      period: "Aug 2023 – Present",
+      period: "Aug 2023 – Dec 2025",
       location: "Hyderabad, India",
       url: "https://www.cendyn.com",
       description: "Managing 20–25 US-based luxury hotel & resort paid search accounts.",
@@ -41,7 +56,7 @@ export const RESUME_DATA: ResumeData = {
       company: "Webdura Technologies",
       role: "Sr. Performance Marketing Executive",
       period: "Jun 2022 – Jun 2023",
-      location: "India",
+      location: "Remote, India",
       url: "https://www.webdura.in/",
       description: "Managed client onboarding and multi-channel performance strategies.",
       achievements: [
@@ -244,6 +259,53 @@ export const SIDEBAR_SKILLS = [
       { name: "Gemini", domain: "gemini.google.com" },
       { name: "Bard", domain: "gemini.google.com" },
       { name: "Google Ai Studio", domain: "aistudio.google.com" }
+    ]
+  },
+  {
+    category: "Projects & Builds",
+    items: [
+      {
+        name: "I Wish I Could Say",
+        description: "Anonymous space for the words left unsaid.",
+        url: "https://iwishicouldsay.com/",
+        domain: "iwishicouldsay.com"
+      },
+      {
+        name: "AiGen Hub",
+        description: "Discover AI tools, prompts, and workflows.",
+        url: "https://aigenhub.space/",
+        domain: "aigenhub.space"
+      },
+      {
+        name: "Janma Sutra",
+        description: "Discover your birth Tithi from your birth details.",
+        url: "https://janmasutra.vercel.app/",
+        domain: "janmasutra.vercel.app"
+      },
+      {
+        name: "CarLog",
+        description: "Digital logbook for your car journeys.",
+        url: "https://carlog-rho.vercel.app/",
+        domain: "carlog-rho.vercel.app"
+      },
+      {
+        name: "PodRead",
+        description: "Turn podcasts into readable knowledge.",
+        url: "https://podread-jay.vercel.app/",
+        domain: "podread-jay.vercel.app"
+      },
+      {
+        name: "Jay",
+        description: "Personal playground for ideas and experiments.",
+        url: "https://jay995.vercel.app/",
+        domain: "jay995.vercel.app"
+      },
+      {
+        name: "Sai Kiran Jabu — Portfolio",
+        description: "Google-style interactive portfolio showcasing my career, skills, and experience.",
+        url: "https://saikiran-jabu-resume.vercel.app/",
+        domain: "saikiran-jabu-resume.vercel.app"
+      }
     ]
   }
 ];

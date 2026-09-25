@@ -11,7 +11,7 @@ export const AIOverview: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [hasAsked, setHasAsked] = useState(false);
 
-  const defaultSummary = "**Sai Kiran Jabu** is a **Performance Marketing & PPC Specialist** based in Hyderabad with **6 years of experience**. He currently manages **$200k+ monthly spend**.\n\nKey Highlights:\n*   **Global Reach:** Managed clients across **USA, UK, Australia, New Zealand, and Europe** (France, Germany, Italy, Spain, Sweden, Denmark, Netherlands, Portugal, Poland, Finland).\n*   **Campaign Expertise:** eCommerce, Lead Generation, Store Visits, and Appointment Bookings.\n*   **Platforms:** Google Ads, SA360, Bing Ads, Meta Ads, GA4.\n*   **Strategic Focus:** Advanced bidding strategies, RLSA, Customer Match, and funnel-based optimizations.\n*   **Projects:** Creator of 'Car Log' (AI Dashboard) and this SERP-style resume.";
+  const defaultSummary = "**Sai Kiran Jabu** is a **Performance Marketing Analyst and PPC Specialist** based in Hyderabad with **6+ years of experience** in digital advertising and performance marketing. He currently works at **FULL Creative Pvt. Ltd.**, managing paid campaigns across Google Ads and Bing Ads with a focus on performance and lead quality.\n\nKey Highlights:\n*   **Performance Marketing:** Google Ads, Microsoft Advertising, SA360, Meta Ads, GA4.\n*   **Campaign Expertise:** eCommerce, Lead Generation, Store Visits, and Appointment Bookings.\n*   **Optimization:** Bidding strategies, audience targeting, campaign analysis, lead-quality analysis, and funnel optimization.\n*   **Analytics & CRO:** Lead audits, performance reporting, landing-page analysis, and Microsoft Clarity user-behavior analysis.\n*   **Experience:** Paid search, multi-channel performance marketing, account management, strategic planning, and budget pacing.\n*   **Builder:** Independently develops digital products, experiments, and web projects across different ideas and use cases.";
 
   const handleAsk = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,7 +63,7 @@ export const AIOverview: React.FC = () => {
                     <h4 className="text-[11px] font-bold text-[#5f6368] dark:text-[#bdc1c6] uppercase tracking-wide mb-2">
                         {section.category}
                     </h4>
-                    <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+                    <div className={section.category === "Projects & Builds" ? "space-y-2.5" : "flex gap-2 overflow-x-auto pb-1 scrollbar-hide"}>
                         {section.items.map((item: any, i: number) => (
                            <SkillBadge key={i} item={item} className="flex-shrink-0 shadow-sm border-[#dadce0] dark:border-[#5f6368]" />
                         ))}

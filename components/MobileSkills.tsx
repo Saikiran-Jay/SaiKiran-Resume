@@ -16,7 +16,7 @@ export const MobileSkills: React.FC = () => {
                     <h4 className="text-xs font-bold text-[#5f6368] dark:text-[#bdc1c6] uppercase tracking-wide mb-3">
                         {section.category}
                     </h4>
-                    <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+                    <div className={section.category === "Projects & Builds" ? "space-y-3" : "flex gap-2 overflow-x-auto pb-1 scrollbar-hide"}>
                         {section.items.map((item: any, i: number) => (
                             <SkillBadge key={i} item={item} className="flex-shrink-0 shadow-none border-[#dadce0] dark:border-[#5f6368]" />
                         ))}

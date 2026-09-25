@@ -31,7 +31,7 @@ export const ShoppingAds: React.FC<ShoppingAdsProps> = ({ navigateToCaseStudy })
             <div className={badgeClass}>Top Choice</div>
           </div>
           <div className="p-2.5">
-            <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">PPC Expert - 6 Years</div>
+            <div className="text-[13px] font-medium text-[#1a0dab] dark:text-[#8ab4f8] truncate">PPC Expert - 6+ Years</div>
             <div className="text-[12px] text-[#4d5156] dark:text-[#bdc1c6] truncate">Sai Kiran Jabu</div>
             <div className="flex items-center gap-1 my-1">
               <span className="text-[11px] font-bold">4.9</span>
