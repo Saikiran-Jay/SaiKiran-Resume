@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { GoogleGenAI } from '@google/genai';
-import { RESUME_DATA } from './constants';
+import { RESUME_DATA, SIDEBAR_SKILLS, PEOPLE_ALSO_ASK } from './constants';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -39,37 +39,81 @@ app.post('/api/ai/ask', async (req, res) => {
     });
   }
 
+  // Build authoritative portfolio knowledge dynamically from source data
+  const portfolioKnowledge = {
+    profile: {
+      name: RESUME_DATA.name,
+      headline: RESUME_DATA.title,
+      about: RESUME_DATA.about,
+      contact: RESUME_DATA.contact,
+      stats: RESUME_DATA.stats,
+      interests: RESUME_DATA.interests,
+      certifications: RESUME_DATA.certifications,
+    },
+    workExperience: RESUME_DATA.experience,
+    education: RESUME_DATA.education,
+    skillsByCompetency: RESUME_DATA.skills,
+    sidebarCategoriesAndTools: SIDEBAR_SKILLS,
+    projectsAndBuilds: SIDEBAR_SKILLS.find(s => s.category.toLowerCase().includes('project'))?.items || [],
+    portfolioProjects: RESUME_DATA.projects,
+    caseStudies: RESUME_DATA.caseStudies,
+    frequentlyAskedQuestions: PEOPLE_ALSO_ASK,
+  };
+
   const systemInstruction = `
-    You are an AI assistant representing ${RESUME_DATA.name}, a ${RESUME_DATA.title}.
-    You are currently embedded in ${RESUME_DATA.name}'s "SERP-style" resume website.
-    Your goal is to answer questions about ${RESUME_DATA.name}'s professional background, skills, and experience based STRICTLY on the provided JSON data.
-    
-    Data: ${JSON.stringify(RESUME_DATA)}
-    
-    Rules:
-    1. Be concise, professional, and persuasive, like a high-end recruiter or ${RESUME_DATA.name} himself.
-    2. If the user asks about something not in the data, politely say you don't have that information but suggest contacting ${RESUME_DATA.name} directly.
-    3. Format your response with simple markdown if needed (bolding key metrics).
-    4. Keep answers under 100 words unless asked for a detailed breakdown.
-    5. Emphasize metrics (ROAS, Budget managed, etc.) whenever relevant.
-  `;
+You are the interactive AI Overview assistant embedded in Sai Kiran Jabu's Google SERP-styled portfolio website.
+Your role is to answer questions about Sai Kiran's professional background, work experience, skills, tools, certifications, projects, education, and contact details.
 
-  try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-3.8-flash',
-      contents: query,
-      config: {
-        systemInstruction,
-      },
-    });
+AUTHORITATIVE PORTFOLIO DATA (SOURCE OF TRUTH):
+${JSON.stringify(portfolioKnowledge, null, 2)}
 
-    return res.json({ text: response.text || "I couldn't generate a response at this time." });
-  } catch (error) {
-    console.error('Gemini API Error:', error);
-    return res.status(500).json({
-      error: 'Sorry, I encountered an error while processing your request. Please try again.',
-    });
+STRICT OPERATING RULES:
+1. STRICT GROUNDING: Answer questions based ONLY on the portfolio data above. Do NOT assume, invent, or use generic internet assumptions about Sai Kiran.
+2. UNKNOWN INFORMATION FALLBACK: If the question cannot be answered from the provided portfolio data (e.g. favorite food, personal life, unlisted companies, hobbies not in the data, or unrelated topics):
+   DO NOT invent an answer or hallucinate.
+   Respond with:
+   "I don't have that information in Sai Kiran's portfolio. For more details, you can reach out to Sai directly."
+   (You may optionally provide his contact email: ${RESUME_DATA.contact.email} or LinkedIn).
+3. ACCURACY & HIGHLIGHTS:
+   - Current Employer: FULL Creative Pvt. Ltd. (Sr. Performance Marketing Analyst, Feb 2026 – Present, Remote / Hyderabad, India).
+   - Core Skills: Google Ads, Microsoft Advertising (Bing Ads), SA360, Meta Ads, GA4, GTM, Floodlight, campaign optimization, bidding strategies, audience targeting, lead generation, performance reporting, landing-page analysis, and Microsoft Clarity.
+   - SA360 Experience: Advanced expertise in Search Ads 360, managing budget groups, bid strategies, Floodlight tags, and luxury hospitality client portfolios.
+   - Projects & Builds: Explicitly mention the projects from the Projects & Builds section (such as "I Wish I Could Say", "AiGen Hub", "Janma Sutra", "CarLog", "PodRead", "Jay", and "Sai Kiran Jabu — Portfolio").
+4. TONE & FORMAT:
+   - Be clear, professional, concise, and structured like a Google AI Overview.
+   - Use bold markdown (**term**) for key technologies, companies, and metrics.
+   - Use bullet points ("• ") where a list is helpful.
+   - Keep answers concise and direct (typically under 120 words).
+`;
+
+  // Candidate models with automated fallback to guard against temporary high-demand / 503 spikes
+  const candidateModels = ['gemini-3.8-flash', 'gemini-2.5-flash', 'gemini-3.1-flash-lite'];
+  let lastError: any = null;
+
+  for (const model of candidateModels) {
+    try {
+      const response = await ai.models.generateContent({
+        model,
+        contents: query,
+        config: {
+          systemInstruction,
+          temperature: 0.2,
+        },
+      });
+
+      if (response && response.text) {
+        return res.json({ text: response.text });
+      }
+    } catch (err: any) {
+      console.warn(`Model ${model} request failed, attempting fallback:`, err?.status || err?.message || err);
+      lastError = err;
+    }
   }
+
+  console.error('All Gemini candidate models failed. Last error:', lastError);
+  return res.status(500).json({
+    error: "I couldn't process that question right now. Please try again.",
+  });
 });
 
 async function startServer() {

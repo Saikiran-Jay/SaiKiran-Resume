@@ -10,13 +10,13 @@ export const generateAIResponse = async (query: string): Promise<string> => {
 
     if (!response.ok) {
       const data = await response.json().catch(() => ({}));
-      return data.error || 'Sorry, I encountered an error while processing your request. Please try again.';
+      return data.error || "I couldn't process that question right now. Please try again.";
     }
 
     const data = await response.json();
-    return data.text || "I couldn't generate a response at this time.";
+    return data.text || "I couldn't process that question right now. Please try again.";
   } catch (error) {
     console.error('Gemini API Error:', error);
-    return 'Sorry, I encountered an error while processing your request. Please try again.';
+    return "I couldn't process that question right now. Please try again.";
   }
 };

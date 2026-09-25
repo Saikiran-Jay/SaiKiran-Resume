@@ -13,13 +13,14 @@ export const AIOverview: React.FC = () => {
 
   const defaultSummary = "**Sai Kiran Jabu** is a **Performance Marketing Analyst and PPC Specialist** based in Hyderabad with **6+ years of experience** in digital advertising and performance marketing. He currently works at **FULL Creative Pvt. Ltd.**, managing paid campaigns across Google Ads and Bing Ads with a focus on performance and lead quality.\n\nKey Highlights:\n*   **Performance Marketing:** Google Ads, Microsoft Advertising, SA360, Meta Ads, GA4.\n*   **Campaign Expertise:** eCommerce, Lead Generation, Store Visits, and Appointment Bookings.\n*   **Optimization:** Bidding strategies, audience targeting, campaign analysis, lead-quality analysis, and funnel optimization.\n*   **Analytics & CRO:** Lead audits, performance reporting, landing-page analysis, and Microsoft Clarity user-behavior analysis.\n*   **Experience:** Paid search, multi-channel performance marketing, account management, strategic planning, and budget pacing.\n*   **Builder:** Independently develops digital products, experiments, and web projects across different ideas and use cases.";
 
-  const handleAsk = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!query.trim()) return;
+  const handleAsk = async (e?: React.FormEvent, customQuery?: string) => {
+    if (e) e.preventDefault();
+    const targetQuery = (customQuery !== undefined ? customQuery : query).trim();
+    if (!targetQuery) return;
 
     setLoading(true);
     setHasAsked(true);
-    const result = await generateAIResponse(query);
+    const result = await generateAIResponse(targetQuery);
     setResponse(result);
     setLoading(false);
   };
@@ -58,12 +59,12 @@ export const AIOverview: React.FC = () => {
 
           {/* Integrated Skills Section (Mobile Only) - Displayed below summary */}
           <div className="lg:hidden mb-4 space-y-3 border-t border-[#dadce0]/50 dark:border-[#5f6368]/30 pt-3">
-              {SIDEBAR_SKILLS.map((section, idx) => (
+              {SIDEBAR_SKILLS.filter(section => section.category !== "Projects & Builds").map((section, idx) => (
                 <div key={idx}>
                     <h4 className="text-[11px] font-bold text-[#5f6368] dark:text-[#bdc1c6] uppercase tracking-wide mb-2">
                         {section.category}
                     </h4>
-                    <div className={section.category === "Projects & Builds" ? "space-y-2.5" : "flex gap-2 overflow-x-auto pb-1 scrollbar-hide"}>
+                    <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
                         {section.items.map((item: any, i: number) => (
                            <SkillBadge key={i} item={item} className="flex-shrink-0 shadow-sm border-[#dadce0] dark:border-[#5f6368]" />
                         ))}
@@ -92,13 +93,13 @@ export const AIOverview: React.FC = () => {
           <div className="mt-3 flex gap-2 overflow-x-auto scrollbar-hide">
             {!hasAsked && (
                 <>
-                <button onClick={() => { setQuery("What campaigns has Sai managed?"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white dark:bg-[#303134] border border-[#dadce0] dark:border-[#3c4043] rounded-full px-3 py-1.5 text-xs text-[#202124] dark:text-[#e8eaed] hover:bg-[#f8f9fa] dark:hover:bg-[#3c4043] transition-colors">
+                <button onClick={() => { setQuery("What campaigns has Sai managed?"); handleAsk(undefined, "What campaigns has Sai managed?"); }} className="whitespace-nowrap bg-white dark:bg-[#303134] border border-[#dadce0] dark:border-[#3c4043] rounded-full px-3 py-1.5 text-xs text-[#202124] dark:text-[#e8eaed] hover:bg-[#f8f9fa] dark:hover:bg-[#3c4043] transition-colors">
                     Campaign Experience
                 </button>
-                <button onClick={() => { setQuery("What are his top skills?"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white dark:bg-[#303134] border border-[#dadce0] dark:border-[#3c4043] rounded-full px-3 py-1.5 text-xs text-[#202124] dark:text-[#e8eaed] hover:bg-[#f8f9fa] dark:hover:bg-[#3c4043] transition-colors">
+                <button onClick={() => { setQuery("What are his top skills?"); handleAsk(undefined, "What are his top skills?"); }} className="whitespace-nowrap bg-white dark:bg-[#303134] border border-[#dadce0] dark:border-[#3c4043] rounded-full px-3 py-1.5 text-xs text-[#202124] dark:text-[#e8eaed] hover:bg-[#f8f9fa] dark:hover:bg-[#3c4043] transition-colors">
                     Top Skills
                 </button>
-                <button onClick={() => { setQuery("How to contact Sai?"); handleAsk({ preventDefault: () => {} } as any); }} className="whitespace-nowrap bg-white dark:bg-[#303134] border border-[#dadce0] dark:border-[#3c4043] rounded-full px-3 py-1.5 text-xs text-[#202124] dark:text-[#e8eaed] hover:bg-[#f8f9fa] dark:hover:bg-[#3c4043] transition-colors">
+                <button onClick={() => { setQuery("How to contact Sai?"); handleAsk(undefined, "How to contact Sai?"); }} className="whitespace-nowrap bg-white dark:bg-[#303134] border border-[#dadce0] dark:border-[#3c4043] rounded-full px-3 py-1.5 text-xs text-[#202124] dark:text-[#e8eaed] hover:bg-[#f8f9fa] dark:hover:bg-[#3c4043] transition-colors">
                     Contact Info
                 </button>
                 </>
